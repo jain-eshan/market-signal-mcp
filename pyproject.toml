@@ -1,0 +1,12 @@
+[project]
+name = "google-trends-mcp"
+version = "0.1.0"
+description = "Personal MCP server for querying Google Trends"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]",
+    "pytrends",
+]
+
+[tool.uv]
+package = false
