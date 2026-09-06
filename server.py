@@ -1,7 +1,10 @@
 import functools
 import json
+import re
 from datetime import datetime, timedelta, timezone
+from urllib.parse import quote
 
+import requests
 from mcp.server.fastmcp import FastMCP
 from pytrends.request import TrendReq
 
@@ -9,6 +12,10 @@ mcp = FastMCP("market-signal")
 pytrends = TrendReq(hl="en-US", tz=330)
 
 RESPONSE_FORMATS = ("concise", "full")
+
+# Wikimedia requires a descriptive User-Agent identifying the app and a contact
+# URL, or it returns 403 - https://meta.wikimedia.org/wiki/User-Agent_policy
+WIKI_USER_AGENT = "market-signal-mcp/0.1.0 (https://github.com/jain-eshan/market-signal-mcp)"
 
 
 def handle_trends_errors(func):
@@ -203,6 +210,73 @@ def trending_now(geo: str = "india", response_format: str = "concise") -> list:
     df = pytrends.trending_searches(pn=geo)
     terms = df[0].tolist()
     return terms[:10] if response_format == "concise" else terms
+
+
+def handle_http_errors(func):
+    """Catch HTTP/network failures (used by tools that call plain REST APIs, not
+    pytrends) and return them as a plain error string instead of crashing."""
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except requests.HTTPError as e:
+            if e.response is not None and e.response.status_code == 404:
+                return f"Not found: {e.request.url}"
+            return f"Request failed: {e}"
+        except Exception as e:
+            return f"Request failed: {e}"
+    return wrapper
+
+
+def _parse_duration_days(duration: str) -> int:
+    """Parse a simple ISO-8601-style duration like "P1Y", "P6M", "P90D" into a day
+    count. Only whole-number Y/M/D forms are supported (no weeks, no combined
+    P1Y6M) - this tool only needs "roughly how far back", not a full ISO-8601
+    duration parser."""
+    match = re.fullmatch(r"P(\d+)([YMD])", duration.upper())
+    if not match:
+        raise ValueError(f'Unrecognized timeframe "{duration}" - expected a form like "P1Y", "P6M", or "P90D"')
+    n, unit = int(match.group(1)), match.group(2)
+    return {"Y": 365, "M": 30, "D": 1}[unit] * n
+
+
+@mcp.tool()
+@handle_http_errors
+def wikipedia_pageviews(article: str, timeframe: str = "P1Y", response_format: str = "concise") -> list:
+    """Monthly Wikipedia pageview counts for an article - a free, no-auth reference/reading
+    interest signal that complements Google Trends' search-interest signal. The two diverging
+    (e.g. a term trending in search but flat on Wikipedia) can itself be a signal worth flagging.
+
+    Args:
+        article: an English Wikipedia article title, e.g. "Artificial_intelligence" or
+            "Machine learning" (spaces are handled automatically).
+        timeframe: how far back to request, as a simple duration - "P1Y" (1 year, default),
+            "P6M" (6 months), "P90D" (90 days). Only whole Y/M/D forms are supported.
+        response_format: "concise" (default) returns only the most recent 12 months.
+            "full" returns the entire requested timeframe.
+
+    Returns:
+        A list of records, one per month, each containing:
+        - "month": "YYYY-MM"
+        - "views": total pageviews that month (all access methods, human traffic only -
+          bot traffic is excluded by Wikimedia's "user" agent filter)
+    """
+    days = _parse_duration_days(timeframe)
+    end = datetime.now(timezone.utc).date()
+    start = end - timedelta(days=days)
+    encoded_article = quote(article.strip().replace(" ", "_"), safe="")
+    url = (
+        "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
+        f"en.wikipedia/all-access/user/{encoded_article}/monthly/"
+        f"{start.strftime('%Y%m%d')}/{end.strftime('%Y%m%d')}"
+    )
+    resp = requests.get(url, headers={"User-Agent": WIKI_USER_AGENT}, timeout=15)
+    resp.raise_for_status()
+    items = resp.json().get("items", [])
+    records = [{"month": f"{item['timestamp'][:4]}-{item['timestamp'][4:6]}", "views": item["views"]} for item in items]
+    if response_format == "concise":
+        records = records[-12:]
+    return records
 
 
 if __name__ == "__main__":
