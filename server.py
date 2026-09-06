@@ -17,6 +17,8 @@ RESPONSE_FORMATS = ("concise", "full")
 # Wikimedia requires a descriptive User-Agent identifying the app and a contact
 # URL, or it returns 403 - https://meta.wikimedia.org/wiki/User-Agent_policy
 WIKI_USER_AGENT = "market-signal-mcp/0.1.0 (https://github.com/jain-eshan/market-signal-mcp)"
+REDDIT_USER_AGENT = "market-signal-mcp/0.1.0 by /u/jain-eshan"
+PRODUCTHUNT_GRAPHQL_URL = "https://api.producthunt.com/v2/api/graphql"
 
 
 def handle_trends_errors(func):
@@ -329,6 +331,144 @@ def company_registration(name: str, jurisdiction: str | None = None) -> list:
         }
         for c in companies
     ]
+
+
+def _reddit_access_token(client_id: str, client_secret: str) -> str:
+    """Reddit's app-only OAuth flow (client_credentials) - no user login needed,
+    just the app's own id/secret."""
+    resp = requests.post(
+        "https://www.reddit.com/api/v1/access_token",
+        data={"grant_type": "client_credentials"},
+        auth=(client_id, client_secret),
+        headers={"User-Agent": REDDIT_USER_AGENT},
+        timeout=10,
+    )
+    resp.raise_for_status()
+    return resp.json()["access_token"]
+
+
+@mcp.tool()
+@handle_http_errors
+def reddit_signal(query: str, subreddits: list[str] | None = None, limit: int = 25) -> list:
+    """Qualitative community signal from Reddit - what people are actually saying,
+    complaining about, or asking for, as opposed to Trends/Wikipedia's passive
+    search/reading signal. This is the --deep tier (issue #7), not a default source,
+    because it's the one source in this tool that requires a registered app.
+
+    Requires a free Reddit app: create one at https://www.reddit.com/prefs/apps
+    (type "script"), then set REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET.
+
+    Args:
+        query: search terms.
+        subreddits: optional list of subreddit names to restrict the search to
+            (e.g. ["startups", "SaaS"]). Omit to search all of Reddit.
+        limit: max results, capped at 100 by Reddit's API.
+
+    Returns:
+        A list of records, each containing "title", "subreddit", "score",
+        "num_comments", "permalink", "created_utc". A setup-instructions string
+        if REDDIT_CLIENT_ID/REDDIT_CLIENT_SECRET are unset.
+    """
+    client_id = os.environ.get("REDDIT_CLIENT_ID")
+    client_secret = os.environ.get("REDDIT_CLIENT_SECRET")
+    if not client_id or not client_secret:
+        return (
+            "reddit_signal requires a free Reddit app. Create one at "
+            "https://www.reddit.com/prefs/apps (type \"script\"), then set "
+            "REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET in your environment."
+        )
+    token = _reddit_access_token(client_id, client_secret)
+    scope = "+".join(subreddits) if subreddits else "all"
+    resp = requests.get(
+        f"https://oauth.reddit.com/r/{scope}/search",
+        params={"q": query, "sort": "relevance", "limit": min(limit, 100), "restrict_sr": bool(subreddits)},
+        headers={"Authorization": f"Bearer {token}", "User-Agent": REDDIT_USER_AGENT},
+        timeout=15,
+    )
+    resp.raise_for_status()
+    children = resp.json().get("data", {}).get("children", [])
+    return [
+        {
+            "title": c["data"].get("title"),
+            "subreddit": c["data"].get("subreddit"),
+            "score": c["data"].get("score"),
+            "num_comments": c["data"].get("num_comments"),
+            "permalink": f"https://reddit.com{c['data'].get('permalink', '')}",
+            "created_utc": c["data"].get("created_utc"),
+        }
+        for c in children
+    ]
+
+
+@mcp.tool()
+@handle_http_errors
+def builder_activity(query: str) -> dict:
+    """Builder/launch-activity signal from Hacker News + Product Hunt - are people
+    actually building and shipping in this space, as opposed to just searching or
+    talking about it. Part of the --deep tier (issue #7).
+
+    Hacker News (via its Algolia search API) needs no auth. Product Hunt's API
+    requires a free developer token even for public read access (confirmed 2026 -
+    there is no unauthenticated tier) - create one at
+    https://api.producthunt.com/v2/oauth/applications and set PRODUCTHUNT_TOKEN
+    to enable that half; HN results are returned regardless.
+
+    Args:
+        query: search terms.
+
+    Returns:
+        {"hn": [...], "product_hunt": [...]} - both keys are always present as
+        lists (empty if no results, or if PRODUCTHUNT_TOKEN is unset), plus a
+        "product_hunt_note" key with setup instructions when the token is unset.
+    """
+    hn_resp = requests.get("https://hn.algolia.com/api/v1/search", params={"query": query, "tags": "story"}, timeout=15)
+    hn_resp.raise_for_status()
+    hn_records = [
+        {
+            "title": h.get("title"),
+            "points": h.get("points"),
+            "num_comments": h.get("num_comments"),
+            "url": h.get("url") or f"https://news.ycombinator.com/item?id={h.get('objectID')}",
+            "created_at": h.get("created_at"),
+        }
+        for h in hn_resp.json().get("hits", [])[:10]
+    ]
+
+    result = {"hn": hn_records, "product_hunt": []}
+    ph_token = os.environ.get("PRODUCTHUNT_TOKEN")
+    if not ph_token:
+        result["product_hunt_note"] = (
+            "Product Hunt requires a free developer token. Create one at "
+            "https://api.producthunt.com/v2/oauth/applications and set PRODUCTHUNT_TOKEN."
+        )
+        return result
+
+    gql = {
+        "query": "query($first: Int!) { posts(first: $first, order: VOTES) { edges { node { name tagline votesCount commentsCount url createdAt } } } }",
+        "variables": {"first": 20},
+    }
+    ph_resp = requests.post(
+        PRODUCTHUNT_GRAPHQL_URL,
+        json=gql,
+        headers={"Authorization": f"Bearer {ph_token}", "Content-Type": "application/json"},
+        timeout=15,
+    )
+    ph_resp.raise_for_status()
+    edges = ph_resp.json().get("data", {}).get("posts", {}).get("edges", [])
+    q_lower = query.lower()
+    result["product_hunt"] = [
+        {
+            "name": e["node"].get("name"),
+            "tagline": e["node"].get("tagline"),
+            "votes": e["node"].get("votesCount"),
+            "comments": e["node"].get("commentsCount"),
+            "url": e["node"].get("url"),
+            "created_at": e["node"].get("createdAt"),
+        }
+        for e in edges
+        if q_lower in f"{e['node'].get('name', '')} {e['node'].get('tagline', '')}".lower()
+    ]
+    return result
 
 
 if __name__ == "__main__":

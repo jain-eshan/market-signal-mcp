@@ -30,6 +30,12 @@ All tools catch failures (rate limits, network errors, the above) and return a p
 ### `wikipedia_pageviews(article, timeframe="P1Y", response_format="concise")`
 Monthly Wikipedia pageview counts — a free, no-auth reading/reference-interest signal that complements Trends' search-interest signal. No API key required.
 
+### `reddit_signal(query, subreddits=None, limit=25)`
+Qualitative community signal (what people are actually saying/complaining about) via Reddit's search API. Requires a free Reddit app — create one at https://www.reddit.com/prefs/apps (type "script") and set `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET`.
+
+### `builder_activity(query)`
+Builder/launch-activity signal from Hacker News (no auth) + Product Hunt (requires a free developer token — create one at https://api.producthunt.com/v2/oauth/applications and set `PRODUCTHUNT_TOKEN`; HN results work regardless).
+
 ### `company_registration(name, jurisdiction=None)`
 Company registration lookup (incorporation date, status, company number) via OpenCorporates. **Scope note: this covers registration facts only — it does NOT cover funding, valuation, or traction data.** No free API exists for that (Tracxn, Crunchbase, and similar are sales-gated enterprise products). Requires a free OpenCorporates API token — register at https://opencorporates.com/api_accounts/new and set `OPENCORPORATES_API_TOKEN` in your environment. Free tier is roughly 50 requests/day, 200/month.
 
