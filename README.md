@@ -1,43 +1,93 @@
-# Google Trends MCP
+# Market Signal MCP
 
-A local [MCP](https://modelcontextprotocol.io) server that lets Claude (or any MCP client) query Google Trends directly — search interest over time, related queries and topics, regional breakdowns, and real-time trending searches — so you can do market research inside a conversation instead of tab-switching to trends.google.com and pasting screenshots back in.
+A local [MCP](https://modelcontextprotocol.io) server + Claude Code skill for researching whether a startup idea, product, or topic shows real market signal — search interest, reading interest, community sentiment, builder activity, and company registration — for case competitions and startup-idea validation.
 
-Built for personal/self-use market research. No API key required — Google Trends has no official public API, so this wraps [pytrends](https://github.com/GeneralMills/pytrends), the standard unofficial Python client, in an MCP server.
+Started as a single-source Google Trends wrapper; evolved into a multi-source signal aggregator with token-conscious defaults and a real eval suite, so it's something you can trust the output of, not just a demo. No database, no config file beyond optional API tokens for the tools that need them.
+
+## `/market-signal` — the actual product
+
+The 9 raw tools below return structured data with no interpretation. The `.claude/skills/market-signal/SKILL.md` skill is where the judgment happens: it decides which tools to call, fans them out in parallel, and writes a fixed-format **SIGNAL REPORT** so results are comparable across ideas and across sessions.
+
+```
+/market-signal AI resume builder for Indian college students
+```
+
+Real output, from a live run against Trends + Wikipedia:
+
+```
+SIGNAL REPORT
+════════════════════════════════════════════════════
+Idea:            AI resume builder for Indian college students
+Verdict:         MODERATE_SIGNAL
+Confidence:      MEDIUM (3 sources, 12mo default window)
+
+── Google Trends (interest_over_time + related_queries, India, 12mo) ──
+"AI resume builder" holds steady in the high-30s/40s over the last 90 days
+(most recent point isPartial - this week isn't finished yet, don't read the
+dip as real). Top related query is generic ("resume ai free") - this space
+isn't short on competitors already using the obvious framing. One rising
+query, "jobsuit ai", spikes to an extreme relative value - worth a manual
+check on whether that's a real emerging competitor or a data artifact.
+
+── Wikipedia (Applicant_tracking_system pageviews) ──
+Steady ~4,000-4,900 monthly views for most of the window, with a step up in
+Dec 2025 (6,763) - no clear correlated spike with the Trends rising-query
+signal. Reading interest in "how ATS works" isn't obviously accelerating
+alongside search interest in resume tools.
+
+Caveats:
+- Default tier only - no Reddit/HN/Product Hunt signal in this run.
+- The "jobsuit ai" rising-query spike is unverified from this data alone.
+- Wikipedia's Sept 2026 figure (735) is a partial month, not a real drop.
+
+Sources used:    interest_over_time, related_queries, wikipedia_pageviews
+Tokens spent:    ~620 (default tier)
+════════════════════════════════════════════════════
+Pitch line: "Demand for AI resume tools is steady but crowded with generic
+entrants - the real question worth digging into next is who's actually
+complaining about existing tools, which needs the --deep tier to answer."
+```
+
+Add `--deep` to also pull Reddit + Hacker News/Product Hunt (community and builder-activity signal, at higher token cost — see [Tools](#tools) below). Every run is appended to a local history file; researching a similar idea again surfaces a `Prior check:` line citing your earlier verdict.
 
 ## Tools
 
-All tools default `geo="IN"` (India) unless noted — pass `geo=""` for worldwide, or any ISO country code (`"US"`, `"GB"`, etc.). `timeframe` accepts pytrends' format, e.g. `"today 12-m"`, `"today 5-y"`, `"now 7-d"`, or an explicit range `"2024-01-01 2024-06-01"`.
+All 9 tools accept `response_format="concise"` (default — truncated, rounded, token-conscious) or `"full"` (complete, unrounded). `/market-signal` calls them itself; you can also call any tool directly.
 
-### `interest_over_time(keywords, timeframe="today 12-m", geo="IN")`
-Relative search interest (0–100) over time for up to 5 keywords, compared side by side. Keywords beyond the first 5 are silently dropped. Each record includes `isPartial` — `true` on the most recent data point means that period isn't finished yet and its value is provisional; don't read a dip on that point as a real trend change.
+**Default tier** (no credentials needed):
 
-### `related_queries(keyword, timeframe="today 12-m", geo="IN")`
-Top and rising related search queries for a single keyword. Returns `{"top": [...], "rising": [...]}`, each a list of `{"query": ..., "value": ...}` records. `top` values are 0–100 relative interest. `rising` values are percent increase — **except** a value of `5000%`, which is Google's "Breakout" marker for explosive growth from a near-zero baseline, not a literal percentage.
+### `interest_over_time(keywords, timeframe="today 12-m", geo="IN", response_format="concise")`
+Relative Google search interest (0–100) over time for up to 5 keywords. `concise` returns the most recent 90 days.
 
-### `related_topics(keyword, timeframe="today 12-m", geo="IN")`
-Same as `related_queries`, but topic clusters (Google's own topic groupings) instead of raw query strings — records have `topic_title` and `topic_type` alongside `value`. Same Breakout convention applies to `rising`.
+### `related_queries(keyword, timeframe="today 12-m", geo="IN", response_format="concise")`
+Top and rising related search queries. A `rising` value of `5000%` is Google's "Breakout" marker (explosive growth from near-zero), not a literal percentage. `concise` returns the top 10 of each.
 
-### `interest_by_region(keyword, timeframe="today 12-m", geo="IN")`
-Search interest for a keyword broken down by state/region within the given `geo`. Returns a list of `{"geoName": ..., "<keyword>": 0-100}` records, one per region.
+### `related_topics(keyword, timeframe="today 12-m", geo="IN", response_format="concise")`
+Same as `related_queries`, but topic clusters instead of raw query strings.
 
-### `trending_now(geo="india")`
-Today's top trending searches for a country. **Note the `geo` format is different here** — it's a full lowercase country name (`"india"`, `"united_states"`), not an ISO code like the other four tools. This is a real inconsistency in Google's own endpoints, not a bug.
+### `interest_by_region(keyword, timeframe="today 12-m", geo="IN", response_format="concise")`
+Search interest by state/region. `concise` returns the top 10 regions by interest.
 
-> **Known limitation:** as of this writing, `trending_now` fails with an HTTP 404. Google appears to have retired the legacy endpoint (`hottrends`/`dailytrends`/`realtimetrends`) that pytrends' trending-search methods depend on — confirmed by testing all three variants pytrends offers. This is an upstream issue, not fixable in this codebase; it fails cleanly with a readable error string rather than crashing. The other 4 tools use a different, still-functional endpoint family and are unaffected. If Google restores the endpoint or pytrends patches around it, this will start working again with no changes needed here.
-
-All tools catch failures (rate limits, network errors, the above) and return a plain error string instead of crashing — Google Trends is a scraped endpoint, not a stable API, so this is expected behavior, not exceptional.
+### `trending_now(geo="india", response_format="concise")`
+Today's top trending searches for a country. **Known limitation:** currently fails with HTTP 404 — Google retired the legacy endpoint this depends on. Fails cleanly with a readable error string; the other 8 tools are unaffected.
 
 ### `wikipedia_pageviews(article, timeframe="P1Y", response_format="concise")`
-Monthly Wikipedia pageview counts — a free, no-auth reading/reference-interest signal that complements Trends' search-interest signal. No API key required.
+Monthly Wikipedia pageview counts — a free, no-auth reading/reference-interest signal that complements Trends' search-interest signal. `concise` returns the last 12 months.
+
+**`--deep` tier** (requires free credentials):
 
 ### `reddit_signal(query, subreddits=None, limit=25)`
-Qualitative community signal (what people are actually saying/complaining about) via Reddit's search API. Requires a free Reddit app — create one at https://www.reddit.com/prefs/apps (type "script") and set `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET`.
+Qualitative community signal via Reddit search. Requires a free Reddit app — create one at https://www.reddit.com/prefs/apps (type "script") and set `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET`.
 
 ### `builder_activity(query)`
-Builder/launch-activity signal from Hacker News (no auth) + Product Hunt (requires a free developer token — create one at https://api.producthunt.com/v2/oauth/applications and set `PRODUCTHUNT_TOKEN`; HN results work regardless).
+Builder/launch-activity signal: Hacker News (Algolia search, no auth) + Product Hunt (requires a free developer token — create one at https://api.producthunt.com/v2/oauth/applications and set `PRODUCTHUNT_TOKEN`). Both `hn` and `product_hunt` are always present as lists; HN works regardless of whether the PH token is set.
+
+**Opt-in** (not part of either tier — called only when a query names a specific company):
 
 ### `company_registration(name, jurisdiction=None)`
-Company registration lookup (incorporation date, status, company number) via OpenCorporates. **Scope note: this covers registration facts only — it does NOT cover funding, valuation, or traction data.** No free API exists for that (Tracxn, Crunchbase, and similar are sales-gated enterprise products). Requires a free OpenCorporates API token — register at https://opencorporates.com/api_accounts/new and set `OPENCORPORATES_API_TOKEN` in your environment. Free tier is roughly 50 requests/day, 200/month.
+Company registration lookup (incorporation date, status, company number) via OpenCorporates. **Scope note: registration facts only, not funding/valuation/traction data** — no free API exists for that (Tracxn, Crunchbase, and similar are sales-gated enterprise products; we looked). Requires a free OpenCorporates API token — register at https://opencorporates.com/api_accounts/new and set `OPENCORPORATES_API_TOKEN`. Free tier is roughly 50 requests/day, 200/month.
+
+All tools catch failures (rate limits, missing credentials, network errors) and return a plain error string instead of crashing.
 
 ## Setup
 
@@ -47,6 +97,15 @@ Requires Python 3.10+ and [`uv`](https://docs.astral.sh/uv/).
 git clone https://github.com/jain-eshan/market-signal-mcp.git
 cd market-signal-mcp
 uv sync
+```
+
+Optional — set any of these you want the corresponding tool to work:
+
+```bash
+export REDDIT_CLIENT_ID=...
+export REDDIT_CLIENT_SECRET=...
+export PRODUCTHUNT_TOKEN=...
+export OPENCORPORATES_API_TOKEN=...
 ```
 
 ## Register with Claude Code
@@ -61,27 +120,35 @@ Verify it connected:
 claude mcp list
 ```
 
-You should see `market-signal` listed as `✔ Connected`. Start a **new** Claude Code conversation after registering — sessions already running won't pick up a newly added server.
+You should see `market-signal` listed as `✔ Connected` with 9 tools. Start a **new** Claude Code conversation after registering — sessions already running won't pick up a newly added server. Then run `/market-signal <your idea>` (add `--deep` for the community/builder tier).
 
-## Usage
+## Evals
 
-Once registered, just ask Claude to use it — e.g.:
+This isn't just an API wrapper — it has a real eval suite, because "does the tool exist" and "does it produce a trustworthy answer" are different questions.
 
-> "Use the google-trends MCP to compare interest in 'lab grown diamonds' vs 'diamond jewellery' in India over the last 12 months, and show me related queries."
+| Layer | What it checks | Status |
+|---|---|---|
+| **Contract tests** (`tests/`) | Every tool's output matches its documented schema; `response_format` contract holds; recorded fixtures, no live network | ✅ 15/15 passing in CI |
+| **Structural report checks** (`tests/eval/test_report_structure.py`) | Every SIGNAL REPORT has all 8 required fields, a valid verdict enum, a Caveats section, under budget — includes a 6-way mutation test proving the checks actually catch violations | ✅ 8/8 passing in CI |
+| **Tool-selection eval** (`tests/eval/test_tool_selection.py`) | Does `/market-signal` call the right tier of tools for a query (Tool Correctness) without calling extras (Tool-Calling Efficiency) — 16 labeled queries, built on [mcp-eval](https://github.com/lastmile-ai/mcp-eval) | ⚠️ Built and structurally verified (config connects to the real server, dataset constructs correctly); needs a real LLM API key to execute — none was available while building this. Run it yourself: `cd tests/eval && cp mcpeval.secrets.yaml.example mcpeval.secrets.yaml` (fill in a key) `&& uv run mcp-eval run test_tool_selection.py -v` |
+| **Output-quality eval** (`tests/eval/test_report_quality.py`, `rubric.md`, `gold_answers.jsonl`) | Is the report's verdict actually correct, free of hallucinated numbers, and does it name the real caveats — 5 gold-labeled queries, LLM-as-judge | ⚠️ Same gap as above — rubric and gold answers are real and committed, judge run needs a key |
 
-### Optional: `/trends` skill
-
-This repo includes a Claude Code skill at `.claude/skills/market-signal/SKILL.md` that wraps the raw tools into a research-and-synthesize workflow — it decides which tools are relevant to your topic and writes up a plain-language summary instead of dumping raw JSON. If you're using Claude Code, this skill is picked up automatically from this repo; just run:
-
-```
-/trends <your topic>
-```
+CI runs the always-green contract + structural suites on every push: [![test](https://github.com/jain-eshan/market-signal-mcp/actions/workflows/test.yml/badge.svg)](https://github.com/jain-eshan/market-signal-mcp/actions/workflows/test.yml)
 
 ## Design notes
 
-- **Data only, no synthesis in the server.** Every tool returns raw, structured data — the interpretation (is this trend real, what does a Breakout marker mean here, what's worth flagging) happens in the calling conversation, not baked into the server. This keeps the server simple and lets whatever's calling it (Claude, another MCP client) apply its own judgment.
-- **No dependencies beyond `mcp[cli]` and `pytrends`.** No database, no config file, no API key.
-- **No formal test suite.** This wraps a scraped third-party endpoint; a test suite would mostly be testing pytrends and Google's current response shape, not this code. Each tool was verified against live Google Trends data during development instead.
+- **Data only in the server, judgment only in the skill.** Every tool returns raw structured data — the verdict, caveats, and pitch line all get decided in `.claude/skills/market-signal/SKILL.md`, not baked into `server.py`. This keeps the server simple and lets the skill's judgment evolve independently.
+- **Token-conscious by default.** `response_format="concise"` (the default) truncates and rounds; the default research tier costs ~600-1000 tokens, `--deep` ~2500-3500 — both measured, not estimated, against real API responses.
+- **Self-updating awareness, not self-updating.** A cached, throttled (24h) check compares your local `VERSION` against GitHub and tells you if a newer one exists — it doesn't modify your install.
+- **Remembers what you've researched.** Every run appends to `~/.config/market-signal-mcp/history.jsonl`; researching something similar again surfaces what you found last time.
+
+## Known limitations
+
+- `trending_now` is broken upstream (see [Tools](#tools)) — not fixable here.
+- `company_registration` covers registration facts only, never funding/traction/valuation data — no free API exists for that.
+- The self-update check notifies only; it does not modify your local install.
+- `reddit_signal`, the Product Hunt half of `builder_activity`, and `company_registration`'s success path were built and their error/setup paths verified live, but their *successful* credentialed calls haven't been verified end-to-end — no API tokens were available while building this. If you set the corresponding env var and hit an issue, please file one.
+- The tool-selection and output-quality evals (see [Evals](#evals)) are built and structurally verified but not yet run against a real LLM judge, for the same reason.
 
 ## License
 
