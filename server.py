@@ -4,7 +4,7 @@ import json
 from mcp.server.fastmcp import FastMCP
 from pytrends.request import TrendReq
 
-mcp = FastMCP("google-trends")
+mcp = FastMCP("market-signal")
 pytrends = TrendReq(hl="en-US", tz=330)
 
 

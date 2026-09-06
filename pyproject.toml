@@ -1,7 +1,7 @@
 [project]
-name = "google-trends-mcp"
+name = "market-signal-mcp"
 version = "0.1.0"
-description = "Personal MCP server for querying Google Trends"
+description = "Multi-source market-signal MCP server for case-comp and startup-idea research"
 requires-python = ">=3.10"
 dependencies = [
     "mcp[cli]",

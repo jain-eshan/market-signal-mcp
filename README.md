@@ -32,15 +32,15 @@ All tools catch failures (rate limits, network errors, the above) and return a p
 Requires Python 3.10+ and [`uv`](https://docs.astral.sh/uv/).
 
 ```bash
-git clone https://github.com/jain-eshan/google-trends-mcp.git
-cd google-trends-mcp
+git clone https://github.com/jain-eshan/market-signal-mcp.git
+cd market-signal-mcp
 uv sync
 ```
 
 ## Register with Claude Code
 
 ```bash
-claude mcp add google-trends -- uv run --directory /absolute/path/to/google-trends-mcp server.py
+claude mcp add market-signal -- uv run --directory /absolute/path/to/market-signal-mcp server.py
 ```
 
 Verify it connected:
@@ -49,7 +49,7 @@ Verify it connected:
 claude mcp list
 ```
 
-You should see `google-trends` listed as `✔ Connected`. Start a **new** Claude Code conversation after registering — sessions already running won't pick up a newly added server.
+You should see `market-signal` listed as `✔ Connected`. Start a **new** Claude Code conversation after registering — sessions already running won't pick up a newly added server.
 
 ## Usage
 
@@ -59,7 +59,7 @@ Once registered, just ask Claude to use it — e.g.:
 
 ### Optional: `/trends` skill
 
-This repo includes a Claude Code skill at `.claude/skills/trends/SKILL.md` that wraps the raw tools into a research-and-synthesize workflow — it decides which tools are relevant to your topic and writes up a plain-language summary instead of dumping raw JSON. If you're using Claude Code, this skill is picked up automatically from this repo; just run:
+This repo includes a Claude Code skill at `.claude/skills/market-signal/SKILL.md` that wraps the raw tools into a research-and-synthesize workflow — it decides which tools are relevant to your topic and writes up a plain-language summary instead of dumping raw JSON. If you're using Claude Code, this skill is picked up automatically from this repo; just run:
 
 ```
 /trends <your topic>
