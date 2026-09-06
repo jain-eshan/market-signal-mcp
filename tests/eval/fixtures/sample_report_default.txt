@@ -1,0 +1,21 @@
+SIGNAL REPORT
+════════════════════════════════════════════════════
+Idea:            AI resume builder for Indian college students
+Verdict:         MODERATE_SIGNAL
+Confidence:      MEDIUM (3 sources, 12mo default window)
+
+── Google Trends (interest_over_time + related_queries, India, 12mo) ──
+"AI resume builder" holds steady in the high-30s/40s over the last 90 days (most recent point isPartial - this week isn't finished yet, don't read the dip as real). Top related query is generic ("resume ai free") - this space isn't short on competitors already using the obvious framing. One rising query, "jobsuit ai", spikes to an extreme relative value - worth a manual check on whether that's a real emerging competitor or a data artifact, not something to over-read from one number.
+
+── Wikipedia (Applicant_tracking_system pageviews) ──
+Steady ~4,000-4,900 monthly views for most of the window, with a step up in Dec 2025 (6,763) - no clear correlated spike with the Trends rising-query signal. Reading interest in "how ATS works" isn't obviously accelerating alongside search interest in resume tools.
+
+Caveats:
+- Default tier only - no Reddit/HN/Product Hunt signal in this run (would need --deep to see if anyone's actually complaining about existing tools, which is where a real wedge would show up).
+- The "jobsuit ai" rising-query spike is unverified from this data alone; treat as a lead to check manually, not a confirmed emerging competitor.
+- Wikipedia's Sept 2026 figure (735) is a partial month, not a real drop.
+
+Sources used:    interest_over_time, related_queries, wikipedia_pageviews
+Tokens spent:    ~620 (default tier)
+════════════════════════════════════════════════════
+Pitch line: "Demand for AI resume tools is steady but crowded with generic entrants - the real question worth digging into next is who's actually complaining about existing tools, which needs the --deep tier to answer."

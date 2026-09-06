@@ -15,4 +15,10 @@ jobs:
       - name: Install dependencies
         run: uv sync --all-extras --dev
       - name: Run contract tests (cassette replay only - no live network)
-        run: uv run pytest tests/ -v --record-mode=none
+        run: uv run pytest tests/ -v --record-mode=none --ignore=tests/eval
+      - name: Run structural report-format checks (no LLM/API key needed)
+        run: uv run pytest tests/eval/test_report_structure.py -v
+      # tests/eval/test_tool_selection.py and test_report_quality.py drive a
+      # real LLM agent via mcp-eval and need an API key - run those manually
+      # (see tests/eval/README in the eval-layer docs) or wire a secret-gated
+      # job later; keeping them out of the always-green CI job by design.
