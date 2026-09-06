@@ -27,6 +27,12 @@ Today's top trending searches for a country. **Note the `geo` format is differen
 
 All tools catch failures (rate limits, network errors, the above) and return a plain error string instead of crashing — Google Trends is a scraped endpoint, not a stable API, so this is expected behavior, not exceptional.
 
+### `wikipedia_pageviews(article, timeframe="P1Y", response_format="concise")`
+Monthly Wikipedia pageview counts — a free, no-auth reading/reference-interest signal that complements Trends' search-interest signal. No API key required.
+
+### `company_registration(name, jurisdiction=None)`
+Company registration lookup (incorporation date, status, company number) via OpenCorporates. **Scope note: this covers registration facts only — it does NOT cover funding, valuation, or traction data.** No free API exists for that (Tracxn, Crunchbase, and similar are sales-gated enterprise products). Requires a free OpenCorporates API token — register at https://opencorporates.com/api_accounts/new and set `OPENCORPORATES_API_TOKEN` in your environment. Free tier is roughly 50 requests/day, 200/month.
+
 ## Setup
 
 Requires Python 3.10+ and [`uv`](https://docs.astral.sh/uv/).

@@ -1,5 +1,6 @@
 import functools
 import json
+import os
 import re
 from datetime import datetime, timedelta, timezone
 from urllib.parse import quote
@@ -277,6 +278,57 @@ def wikipedia_pageviews(article: str, timeframe: str = "P1Y", response_format: s
     if response_format == "concise":
         records = records[-12:]
     return records
+
+
+@mcp.tool()
+@handle_http_errors
+def company_registration(name: str, jurisdiction: str | None = None) -> list:
+    """Company registration lookup via OpenCorporates - registration facts only
+    (incorporation date, status, company number). Does NOT cover funding, valuation,
+    or traction data - no free API exists for that (see README for why).
+
+    Requires a free OpenCorporates API token: as of 2026 OpenCorporates requires a
+    token on every request, even on the free tier (roughly 50 requests/day, 200/month).
+    Register at https://opencorporates.com/api_accounts/new and set
+    OPENCORPORATES_API_TOKEN in your environment.
+
+    Args:
+        name: company name to search for.
+        jurisdiction: optional OpenCorporates jurisdiction code (e.g. "in", "us_de") to narrow results.
+
+    Returns:
+        A list of up to 5 matches, each containing "company_name", "jurisdiction_code",
+        "incorporation_date", "company_number", "current_status", "opencorporates_url".
+        Empty list if no matches. A setup-instructions string if OPENCORPORATES_API_TOKEN
+        is unset, or OpenCorporates' own rejection message if the token is invalid/expired.
+    """
+    token = os.environ.get("OPENCORPORATES_API_TOKEN")
+    if not token:
+        return (
+            "company_registration requires a free OpenCorporates API token. Register at "
+            "https://opencorporates.com/api_accounts/new and set OPENCORPORATES_API_TOKEN "
+            "in your environment, then restart the MCP server."
+        )
+    params = {"q": name, "api_token": token}
+    if jurisdiction:
+        params["jurisdiction_code"] = jurisdiction
+    resp = requests.get("https://api.opencorporates.com/v0.4/companies/search", params=params, timeout=15)
+    if resp.status_code == 401:
+        message = resp.json().get("error", {}).get("message", "invalid token")
+        return f"OpenCorporates rejected the API token: {message}"
+    resp.raise_for_status()
+    companies = resp.json().get("results", {}).get("companies", [])[:5]
+    return [
+        {
+            "company_name": c.get("company", {}).get("name"),
+            "jurisdiction_code": c.get("company", {}).get("jurisdiction_code"),
+            "incorporation_date": c.get("company", {}).get("incorporation_date"),
+            "company_number": c.get("company", {}).get("company_number"),
+            "current_status": c.get("company", {}).get("current_status"),
+            "opencorporates_url": c.get("company", {}).get("opencorporates_url"),
+        }
+        for c in companies
+    ]
 
 
 if __name__ == "__main__":
