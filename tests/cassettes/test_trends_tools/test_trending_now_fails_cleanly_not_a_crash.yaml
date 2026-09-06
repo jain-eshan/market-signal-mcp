@@ -1,0 +1,52 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Cookie:
+      - NID=534=RixsQd7LPKCDb5u7eVUtuKhyYHJ2MIJ_Y7qYzT2cTimGUAHHNIo3Jv3g-EvNzTgGOfyBbEUavBkyeWk_v8BGDIxTiuDXQHjaJ8fFU0h5o3ppSQUcu-YkQu7UWo9dyXErHRUFtmVab8jJCBRKfeZvcsfpxuiE3wyLYQrnNECO7IU8ORoslTN19wLBhr8lKD8DgQJaL3U
+      accept-language:
+      - en-US
+    method: GET
+    uri: https://trends.google.com/trends/hottrends/visualize/internal/data
+  response:
+    body:
+      string: '
+
+        <html><head>
+
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+
+        <title>404 Page not found</title>
+
+        </head>
+
+        <body text=#000000 bgcolor=#ffffff>
+
+        <h1>Error: Page not found</h1>
+
+        <h2>The requested URL was not found on this server.</h2>
+
+        <h2></h2>
+
+        </body></html>
+
+        '
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '272'
+      Content-Type:
+      - text/html; charset=UTF-8
+      Date:
+      - Sun, 06 Sep 2026 16:25:54 GMT
+    status:
+      code: 404
+      message: Not Found
+version: 1

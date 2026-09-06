@@ -1,0 +1,185 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Cookie:
+      - NID=534=RixsQd7LPKCDb5u7eVUtuKhyYHJ2MIJ_Y7qYzT2cTimGUAHHNIo3Jv3g-EvNzTgGOfyBbEUavBkyeWk_v8BGDIxTiuDXQHjaJ8fFU0h5o3ppSQUcu-YkQu7UWo9dyXErHRUFtmVab8jJCBRKfeZvcsfpxuiE3wyLYQrnNECO7IU8ORoslTN19wLBhr8lKD8DgQJaL3U
+      accept-language:
+      - en-US
+    method: POST
+    uri: https://trends.google.com/trends/api/explore?hl=en-US&req=%7B%22comparisonItem%22%3A+%5B%7B%22keyword%22%3A+%22lab+grown+diamonds%22%2C+%22time%22%3A+%22today+12-m%22%2C+%22geo%22%3A+%22IN%22%7D%5D%2C+%22category%22%3A+0%2C+%22property%22%3A+%22%22%7D&tz=330
+  response:
+    body:
+      string: ')]}''
+
+        {"widgets":[{"request":{"time":"2025-09-06 2026-09-06","resolution":"WEEK","locale":"en-US","comparisonItem":[{"geo":{"country":"IN"},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"lab
+        grown diamonds"}]}}],"requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"lineAnnotationText":"Search
+        interest","bullets":[{"text":"lab grown diamonds"}],"showLegend":false,"showAverages":false,"helpDialog":{"title":"Interest
+        over time","content":"Numbers represent search interest relative to the highest
+        point on the chart for the given region and time. A value of 100 is the peak
+        popularity for the term. A value of 50 means that the term is half as popular.
+        A score of 0 means there was not enough data for this term."},"token":"ANI_2wMAAAAAap7lkWNH0AAT_9oEn-gNNW-oXsU1nf-e","id":"TIMESERIES","type":"fe_line_chart","title":"Interest
+        over time","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{"country":"IN"},"comparisonItem":[{"time":"2025-09-06
+        2026-09-06","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"lab
+        grown diamonds"}]}}],"resolution":"REGION","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"IN","resolution":"provinces","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by subregion","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_1","index":0,"bullet":"lab
+        grown diamonds","token":"ANI_2wMAAAAAap7lkYq9H6yl3fAIW2Ngb78V2OfKo1LH","id":"GEO_MAP","type":"fe_geo_chart_explore","title":"Interest
+        by subregion","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"restriction":{"geo":{"country":"IN"},"time":"2025-09-06
+        2026-09-06","originalTimeRangeForExploreUrl":"today 12-m","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"lab
+        grown diamonds"}]}},"keywordType":"ENTITY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2024-09-05
+        2025-09-05"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"IN","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        topics","content":"Users searching for your term also searched for these topics.
+        You can view by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular topics. Scoring is on a relative scale where a value of
+        100 is the most commonly searched topic and a value of 50 is a topic searched
+        half as often as the most popular term, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Related topics with the biggest increase in search frequency since the last
+        time period. Results marked \"Breakout\" had a tremendous increase, probably
+        because these topics are new and had few (if any) prior searches."},"color":"PALETTE_COLOR_1","keywordName":"lab
+        grown diamonds","token":"ANI_2wMAAAAAap7lkQBirtWQ6viI0R-gO-nkjmpZfS3U","id":"RELATED_TOPICS","type":"fe_related_searches","title":"Related
+        topics","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{"country":"IN"},"time":"2025-09-06
+        2026-09-06","originalTimeRangeForExploreUrl":"today 12-m","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"lab
+        grown diamonds"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2024-09-05
+        2025-09-05"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"IN","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_1","keywordName":"lab
+        grown diamonds","token":"ANI_2wMAAAAAap7lkc_3o2po32MHeuUCvNJWYzuTKeaI","id":"RELATED_QUERIES","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false}],"keywords":[{"keyword":"lab
+        grown diamonds","name":"lab grown diamonds","type":"Search term"}],"timeRanges":["Past
+        12 months"],"shareText":"Explore search interest for lab grown diamonds by
+        time, location and popularity on Google Trends","shouldShowMultiHeatMapMessage":false}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Disposition:
+      - attachment; filename="json.txt"; filename*=UTF-8''json.txt
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - 'script-src ''nonce-ejm-mHVZWehqgmCPf84u0A'' ''unsafe-inline'' ''strict-dynamic''
+        https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
+        /trends/cspreport'
+      Content-Type:
+      - application/json; charset=utf-8
+      Cross-Origin-Opener-Policy:
+      - same-origin-allow-popups
+      Date:
+      - Sun, 06 Sep 2026 16:25:53 GMT
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      P3P:
+      - CP="This is not a P3P policy! See g.co/p3phelp for more info."
+      Pragma:
+      - no-cache
+      Server:
+      - GSE
+      Set-Cookie:
+      - NID=534=cfB1vezxfeJ94Wv0e5zijvjlxCID0EiSgg42S6H_3g1W8G8RvEgdlAEqMHJ6mL6_4Eyl0CHDnaCkh-3vQgar-RPfqYi21Gd0bLSrj_EKIY1GkeyHBSfjBKAeDa8j-fOrUj1vDQhtEjNiyq8PtmMke3w8nOPPfzJSLzd2NuuMQENcxuXJVDCfkYqrkrFToWuCFtmiryc;
+        expires=Mon, 08-Mar-2027 16:25:47 GMT; path=/; domain=.google.com; HttpOnly
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Cookie:
+      - NID=534=RixsQd7LPKCDb5u7eVUtuKhyYHJ2MIJ_Y7qYzT2cTimGUAHHNIo3Jv3g-EvNzTgGOfyBbEUavBkyeWk_v8BGDIxTiuDXQHjaJ8fFU0h5o3ppSQUcu-YkQu7UWo9dyXErHRUFtmVab8jJCBRKfeZvcsfpxuiE3wyLYQrnNECO7IU8ORoslTN19wLBhr8lKD8DgQJaL3U
+      accept-language:
+      - en-US
+    method: GET
+    uri: https://trends.google.com/trends/api/widgetdata/comparedgeo?req=%7B%22geo%22%3A+%7B%22country%22%3A+%22IN%22%7D%2C+%22comparisonItem%22%3A+%5B%7B%22time%22%3A+%222025-09-06+2026-09-06%22%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22lab+grown+diamonds%22%7D%5D%7D%7D%5D%2C+%22resolution%22%3A+%22REGION%22%2C+%22locale%22%3A+%22en-US%22%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%2C+%22includeLowSearchVolumeGeos%22%3A+true%7D&token=ANI_2wMAAAAAap7lkYq9H6yl3fAIW2Ngb78V2OfKo1LH&tz=330
+  response:
+    body:
+      string: ')]}'',
+
+        {"default":{"geoMapData":[{"geoCode":"IN-CH","geoName":"Chandigarh","value":[100],"formattedValue":["100"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-DL","geoName":"Delhi","value":[97],"formattedValue":["97"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-KA","geoName":"Karnataka","value":[89],"formattedValue":["89"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-HR","geoName":"Haryana","value":[82],"formattedValue":["82"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-TG","geoName":"Telangana","value":[81],"formattedValue":["81"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-MH","geoName":"Maharashtra","value":[74],"formattedValue":["74"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-GJ","geoName":"Gujarat","value":[72],"formattedValue":["72"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-GA","geoName":"Goa","value":[64],"formattedValue":["64"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-PY","geoName":"Puducherry","value":[57],"formattedValue":["57"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-PB","geoName":"Punjab","value":[48],"formattedValue":["48"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-TN","geoName":"Tamil
+        Nadu","value":[43],"formattedValue":["43"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-UT","geoName":"Uttarakhand","value":[41],"formattedValue":["41"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-AP","geoName":"Andhra
+        Pradesh","value":[40],"formattedValue":["40"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-WB","geoName":"West
+        Bengal","value":[33],"formattedValue":["33"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-UP","geoName":"Uttar
+        Pradesh","value":[29],"formattedValue":["29"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-RJ","geoName":"Rajasthan","value":[29],"formattedValue":["29"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-JH","geoName":"Jharkhand","value":[27],"formattedValue":["27"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-MP","geoName":"Madhya
+        Pradesh","value":[27],"formattedValue":["27"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-CT","geoName":"Chhattisgarh","value":[26],"formattedValue":["26"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-JK","geoName":"Jammu
+        and Kashmir","value":[22],"formattedValue":["22"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-KL","geoName":"Kerala","value":[20],"formattedValue":["20"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-HP","geoName":"Himachal
+        Pradesh","value":[17],"formattedValue":["17"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-AS","geoName":"Assam","value":[17],"formattedValue":["17"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-OR","geoName":"Odisha","value":[17],"formattedValue":["17"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-BR","geoName":"Bihar","value":[13],"formattedValue":["13"],"maxValueIndex":0,"hasData":[true]},{"geoCode":"IN-LD","geoName":"Lakshadweep","value":[0],"formattedValue":[""],"maxValueIndex":0,"hasData":[false]},{"geoCode":"IN-NL","geoName":"Nagaland","value":[0],"formattedValue":[""],"maxValueIndex":0,"hasData":[false]},{"geoCode":"IN-MZ","geoName":"Mizoram","value":[0],"formattedValue":[""],"maxValueIndex":0,"hasData":[false]},{"geoCode":"IN-MN","geoName":"Manipur","value":[0],"formattedValue":[""],"maxValueIndex":0,"hasData":[false]},{"geoCode":"IN-SK","geoName":"Sikkim","value":[0],"formattedValue":[""],"maxValueIndex":0,"hasData":[false]},{"geoCode":"IN-ML","geoName":"Meghalaya","value":[0],"formattedValue":[""],"maxValueIndex":0,"hasData":[false]},{"geoCode":"IN-DN","geoName":"Dadra
+        and Nagar Haveli","value":[0],"formattedValue":[""],"maxValueIndex":0,"hasData":[false]},{"geoCode":"IN-TR","geoName":"Tripura","value":[0],"formattedValue":[""],"maxValueIndex":0,"hasData":[false]},{"geoCode":"IN-DD","geoName":"Daman
+        and Diu","value":[0],"formattedValue":[""],"maxValueIndex":0,"hasData":[false]},{"geoCode":"IN-AR","geoName":"Arunachal
+        Pradesh","value":[0],"formattedValue":[""],"maxValueIndex":0,"hasData":[false]},{"geoCode":"IN-AN","geoName":"Andaman
+        and Nicobar Islands","value":[0],"formattedValue":[""],"maxValueIndex":0,"hasData":[false]}]}}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Cache-Control:
+      - private, max-age=0
+      Content-Disposition:
+      - attachment; filename="json.txt"
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - 'script-src ''nonce-qI1UY2eu6poFDg6mBGIZmw'' ''unsafe-inline'' ''strict-dynamic''
+        https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
+        /trends/cspreport'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Cross-Origin-Opener-Policy:
+      - same-origin-allow-popups
+      Date:
+      - Sun, 06 Sep 2026 16:25:54 GMT
+      Expires:
+      - Sun, 06 Sep 2026 16:25:54 GMT
+      P3P:
+      - CP="This is not a P3P policy! See g.co/p3phelp for more info."
+      Server:
+      - GSE
+      Set-Cookie:
+      - NID=534=ogRJO2j-ipq9-N7hFBkekSeaX40Ks0-QkljbPkyuI2Ib1jCSOzue2LdMBYQS_ny-9m4y10fp70Qni08DbFg6wgi7YosLQn5SvRs7GpmUTx5qfusdrl0jgwwraqeRs5GMHEcmgcdSckt0HYttmz_Lhbs8bJInGAniJB3uuemnx6JNihS9iWbM_WRy1bJaNhZKn4XC3hI;
+        expires=Mon, 08-Mar-2027 16:25:47 GMT; path=/; domain=.google.com; HttpOnly
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1

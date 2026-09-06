@@ -1,0 +1,337 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+    method: GET
+    uri: https://hn.algolia.com/api/v1/search?query=AI+resume+builder&tags=story
+  response:
+    body:
+      string: '{"exhaustive":{"nbHits":false,"typo":false},"exhaustiveNbHits":false,"exhaustiveTypo":false,"hits":[{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"rrmdp"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Show
+        HN: <em>Resume</em> Yay: The Free <em>AI</em> <em>Resume</em> <em>Builder</em>
+        that also finds you jobs"},"url":{"matchLevel":"none","matchedWords":[],"value":"https://resumeyay.com/?via=jobboardsearch&utm_source=site&utm_campaign=first&utm_id=jobboardsearch"}},"_tags":["story","author_rrmdp","story_43760352","show_hn"],"author":"rrmdp","children":[43761042],"created_at":"2025-04-22T09:26:07Z","created_at_i":1745313967,"num_comments":2,"objectID":"43760352","points":5,"story_id":43760352,"title":"Show
+        HN: Resume Yay: The Free AI Resume Builder that also finds you jobs","updated_at":"2025-04-22T22:34:35Z","url":"https://resumeyay.com/?via=jobboardsearch&utm_source=site&utm_campaign=first&utm_id=jobboardsearch"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"serdaraksoy"},"story_text":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Hey
+        everyone,<p>A while back, I shared how I built a tool that handles job applications
+        from end to end on Reddit. I was blown away by how many job seekers gave it
+        a try and shared their experiences. While a good number of you landed new
+        roles and many received interviews, plenty of others only got rejection emails.<p>But
+        we also noticed a pattern: a lot of these rejections happened before a recruiter
+        even saw the <em>resume</em>. After digging into this problem, we realized
+        it often came down to ATS issues, missing focus keywords, or not tailoring
+        the <em>resume</em> to the specific job. That\u2019s why we spent the last
+        four months building an <em>AI</em> <em>Resume</em> <em>Builder</em>.<p>We
+        tested nearly every <em>resume</em> tool out there, brought in recruiters
+        for feedback, and even ran a private beta to fine-tune everything. The result
+        is something we\u2019re really proud of, but still improving every day.<p>Here\u2019s
+        what it does:<p><em>AI</em>-Powered Feedback &amp; Suggestions: It doesn\u2019t
+        just format your <em>resume</em>; it identifies problem areas and helps you
+        refine your achievements (or suggests brand-new bullet points you might\u2019ve
+        missed).<p>Deep Analysis (24 Factors!): We look at everything from structure
+        to relevant keywords, making sure your <em>resume</em> gets past those pesky
+        ATS filters.<p>ATS-Friendly Templates: Every template is designed to play
+        nicely with modern applicant tracking systems, giving you a better shot at
+        actually getting seen.<p>We\u2019re making it free for now, at least until
+        our server bills drain the last cent from my bank account! (Kidding\u2026mostly.)
+        We\u2019re also adding new features soon, like matching your <em>resume</em>
+        to specific job descriptions. We\u2019d rather get it right than rush out
+        something half-baked, so stay tuned.<p>I\u2019d love to hear your feedback,
+        questions, or success stories. Good luck with your job search, and thanks
+        for giving this a look!<p>Cheers,"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Show
+        HN: Free <em>AI</em> <em>Resume</em> <em>Builder</em> \u2013 Beta Testers
+        Say It''s One of the Best"},"url":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"https://www.wobo.<em>ai</em>/<em>ai</em>-<em>resume</em>-<em>builder</em>"}},"_tags":["story","author_serdaraksoy","story_43711925","show_hn"],"author":"serdaraksoy","children":[43712015,43712094],"created_at":"2025-04-17T00:49:20Z","created_at_i":1744850960,"num_comments":4,"objectID":"43711925","points":4,"story_id":43711925,"story_text":"Hey
+        everyone,<p>A while back, I shared how I built a tool that handles job applications
+        from end to end on Reddit. I was blown away by how many job seekers gave it
+        a try and shared their experiences. While a good number of you landed new
+        roles and many received interviews, plenty of others only got rejection emails.<p>But
+        we also noticed a pattern: a lot of these rejections happened before a recruiter
+        even saw the resume. After digging into this problem, we realized it often
+        came down to ATS issues, missing focus keywords, or not tailoring the resume
+        to the specific job. That\u2019s why we spent the last four months building
+        an AI Resume Builder.<p>We tested nearly every resume tool out there, brought
+        in recruiters for feedback, and even ran a private beta to fine-tune everything.
+        The result is something we\u2019re really proud of, but still improving every
+        day.<p>Here\u2019s what it does:<p>AI-Powered Feedback &amp; Suggestions:
+        It doesn\u2019t just format your resume; it identifies problem areas and helps
+        you refine your achievements (or suggests brand-new bullet points you might\u2019ve
+        missed).<p>Deep Analysis (24 Factors!): We look at everything from structure
+        to relevant keywords, making sure your resume gets past those pesky ATS filters.<p>ATS-Friendly
+        Templates: Every template is designed to play nicely with modern applicant
+        tracking systems, giving you a better shot at actually getting seen.<p>We\u2019re
+        making it free for now, at least until our server bills drain the last cent
+        from my bank account! (Kidding\u2026mostly.) We\u2019re also adding new features
+        soon, like matching your resume to specific job descriptions. We\u2019d rather
+        get it right than rush out something half-baked, so stay tuned.<p>I\u2019d
+        love to hear your feedback, questions, or success stories. Good luck with
+        your job search, and thanks for giving this a look!<p>Cheers,","title":"Show
+        HN: Free AI Resume Builder \u2013 Beta Testers Say It''s One of the Best","updated_at":"2025-04-18T02:27:41Z","url":"https://www.wobo.ai/ai-resume-builder"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"nerdjsonxx"},"story_text":{"fullyHighlighted":false,"matchLevel":"partial","matchedWords":["ai","resume"],"value":"Hey
+        everyone,<p>I''m self-taught dev from France. I''d like to share and receive
+        your feedback on ResumeAI, which is a project I''ve been working on because
+        I was frustrated with the traditional <em>resume</em> building process. I
+        especially got tired of multiple input fields for all the <em>resume</em>
+        builders out there. So I built a solution to generate fully formatted CVs
+        out of a single text area. It''s also possible to use your own voice in order
+        to describe your experiences, projects, etc from just natural language (my
+        app is using the whisper LLM under the hood).<p>For now you can try it for
+        free, just refresh the page if you see the paywall in order to try again.
+        <em>AI</em> rewrites for now are unlimited. I''ve got a bunch of templates
+        ready and more are on the way.<p>Please visit <a href=\"https://resumeai.app/\"
+        rel=\"nofollow\">https://resumeai.app/</a> to let me know what you guys think!"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Show
+        HN: ResumeAI, <em>AI</em>-powered <em>Resume</em> <em>Builder</em> (get your
+        resumes done in seconds!)"},"url":{"matchLevel":"none","matchedWords":[],"value":"https://resumeai.app"}},"_tags":["story","author_nerdjsonxx","story_41031434","show_hn"],"author":"nerdjsonxx","created_at":"2024-07-22T06:28:40Z","created_at_i":1721629720,"num_comments":0,"objectID":"41031434","points":4,"story_id":41031434,"story_text":"Hey
+        everyone,<p>I&#x27;m self-taught dev from France. I&#x27;d like to share and
+        receive your feedback on ResumeAI, which is a project I&#x27;ve been working
+        on because I was frustrated with the traditional resume building process.
+        I especially got tired of multiple input fields for all the resume builders
+        out there. So I built a solution to generate fully formatted CVs out of a
+        single text area. It&#x27;s also possible to use your own voice in order to
+        describe your experiences, projects, etc from just natural language (my app
+        is using the whisper LLM under the hood).<p>For now you can try it for free,
+        just refresh the page if you see the paywall in order to try again. AI rewrites
+        for now are unlimited. I&#x27;ve got a bunch of templates ready and more are
+        on the way.<p>Please visit <a href=\"https:&#x2F;&#x2F;resumeai.app&#x2F;\"
+        rel=\"nofollow\">https:&#x2F;&#x2F;resumeai.app&#x2F;</a> to let me know what
+        you guys think!","title":"Show HN: ResumeAI, AI-powered Resume Builder (get
+        your resumes done in seconds!)","updated_at":"2024-09-20T17:26:26Z","url":"https://resumeai.app"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"Haroonbasil"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Show
+        HN: GetHireToday \u2013 <em>AI</em> <em>resume</em> <em>builder</em> that
+        targets ATS keyword matching"},"url":{"matchLevel":"none","matchedWords":[],"value":"https://gethiretoday.com"}},"_tags":["story","author_Haroonbasil","story_47804977","show_hn"],"author":"Haroonbasil","children":[47804978,47805231],"created_at":"2026-04-17T12:03:16Z","created_at_i":1776427396,"num_comments":2,"objectID":"47804977","points":3,"story_id":47804977,"title":"Show
+        HN: GetHireToday \u2013 AI resume builder that targets ATS keyword matching","updated_at":"2026-04-17T13:56:49Z","url":"https://gethiretoday.com"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"themendelson"},"story_text":{"matchLevel":"none","matchedWords":[],"value":"any
+        feedback would be appreciated :)"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Show
+        HN: <em>AiResume</em> \u2013 I built a free <em>AI</em>-powered <em>resume</em>
+        <em>builder</em>"},"url":{"fullyHighlighted":false,"matchLevel":"partial","matchedWords":["ai","resume"],"value":"https://<em>airesume</em>.com"}},"_tags":["story","author_themendelson","story_41756537","show_hn"],"author":"themendelson","created_at":"2024-10-06T12:04:57Z","created_at_i":1728216297,"num_comments":0,"objectID":"41756537","points":3,"story_id":41756537,"story_text":"any
+        feedback would be appreciated :)","title":"Show HN: AiResume \u2013 I built
+        a free AI-powered resume builder","updated_at":"2024-10-07T04:39:32Z","url":"https://airesume.com"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"drxgos"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Easy
+        <em>AI</em> job <em>resume</em> <em>builder</em>"},"url":{"fullyHighlighted":false,"matchLevel":"partial","matchedWords":["resume"],"value":"https://<em>resume</em>-forge-production.up.railway.app"}},"_tags":["story","author_drxgos","story_47280022"],"author":"drxgos","children":[47280023,47280086,47280146],"created_at":"2026-03-06T19:38:12Z","created_at_i":1772825892,"num_comments":2,"objectID":"47280022","points":2,"story_id":47280022,"title":"Easy
+        AI job resume builder","updated_at":"2026-03-07T19:40:03Z","url":"https://resume-forge-production.up.railway.app"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"MikeLee-1"},"story_text":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"I
+        built a free <em>AI</em> <em>resume</em> <em>builder</em> focused on ATS (Applicant
+        Tracking System) optimization.\nThe core insight: most resumes get filtered
+        by software before a human sees them. Pretty templates often score terribly
+        because ATS parsers can''t read them properly.\nResumeForge (resumeforge.cc)
+        shows you your ATS compatibility score in real-time as you edit. The <em>AI</em>
+        generates professional summaries and optimizes bullet points for both ATS
+        parsers and human readers.\nNo signup required. Free to build. $7 one-time
+        for PDF + Word download.\nTech: Vanilla JS, no framework. <em>AI</em> for
+        content generation. Everything runs client-side except the <em>AI</em> calls.\nWould
+        appreciate feedback on both the product and the technical approach."},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Show
+        HN: ResumeForge \u2013 Free <em>AI</em> <em>resume</em> <em>builder</em> with
+        real-time ATS scoring"},"url":{"matchLevel":"none","matchedWords":[],"value":"https://resumeforge.cc"}},"_tags":["story","author_MikeLee-1","story_47227262","show_hn"],"author":"MikeLee-1","children":[47227285,47228143],"created_at":"2026-03-03T02:37:22Z","created_at_i":1772505442,"num_comments":2,"objectID":"47227262","points":2,"story_id":47227262,"story_text":"I
+        built a free AI resume builder focused on ATS (Applicant Tracking System)
+        optimization.\nThe core insight: most resumes get filtered by software before
+        a human sees them. Pretty templates often score terribly because ATS parsers
+        can&#x27;t read them properly.\nResumeForge (resumeforge.cc) shows you your
+        ATS compatibility score in real-time as you edit. The AI generates professional
+        summaries and optimizes bullet points for both ATS parsers and human readers.\nNo
+        signup required. Free to build. $7 one-time for PDF + Word download.\nTech:
+        Vanilla JS, no framework. AI for content generation. Everything runs client-side
+        except the AI calls.\nWould appreciate feedback on both the product and the
+        technical approach.","title":"Show HN: ResumeForge \u2013 Free AI resume builder
+        with real-time ATS scoring","updated_at":"2026-03-05T23:40:19Z","url":"https://resumeforge.cc"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"bisit"},"title":{"fullyHighlighted":true,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"<em>AI</em>
+        <em>Resume</em> <em>Builder</em>"},"url":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"https://www.thehumancapitalhub.com/<em>ai</em>-<em>resume</em>-<em>builder</em>"}},"_tags":["story","author_bisit","story_48537152"],"author":"bisit","children":[48537153,48537410],"created_at":"2026-06-15T05:59:57Z","created_at_i":1781503197,"num_comments":1,"objectID":"48537152","points":2,"story_id":48537152,"title":"AI
+        Resume Builder","updated_at":"2026-06-16T06:48:53Z","url":"https://www.thehumancapitalhub.com/ai-resume-builder"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"mikkaai"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"We
+        built ApplyGenius.<em>ai</em> an <em>AI</em> <em>resume</em> <em>builder</em>
+        for developers"},"url":{"fullyHighlighted":false,"matchLevel":"partial","matchedWords":["ai"],"value":"https://applygenius.<em>ai</em>/"}},"_tags":["story","author_mikkaai","story_47335022"],"author":"mikkaai","children":[47335023,47486341],"created_at":"2026-03-11T13:02:22Z","created_at_i":1773234142,"num_comments":1,"objectID":"47335022","points":2,"story_id":47335022,"title":"We
+        built ApplyGenius.ai an AI resume builder for developers","updated_at":"2026-03-23T07:17:34Z","url":"https://applygenius.ai/"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"eyhz"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"<em>AI</em>
+        <em>Resume</em> <em>Builder</em> \u2013 Tailor for Your Dream Job"},"url":{"fullyHighlighted":false,"matchLevel":"partial","matchedWords":["ai","resume"],"value":"https://www.<em>ai</em>-<em>resume</em>.net/"}},"_tags":["story","author_eyhz","story_43456229"],"author":"eyhz","children":[43456230],"created_at":"2025-03-23T21:58:58Z","created_at_i":1742767138,"num_comments":1,"objectID":"43456229","points":2,"story_id":43456229,"title":"AI
+        Resume Builder \u2013 Tailor for Your Dream Job","updated_at":"2025-03-24T00:06:53Z","url":"https://www.ai-resume.net/"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"yregmi"},"story_text":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"I\u2019ve
+        been on the job hunt for the past few months and after going through numerous
+        reddit threads and Linkedin posts I saw that customized resumes make a huge
+        difference in getting callbacks. But every tool I tried was either bloated
+        with 50+ features I didn\u2019t need or way too expensive (some were charging
+        $70/month!). These people think I''m made of money!<p>So I decided to build
+        my own <em>AI</em> <em>resume</em> <em>builder</em>.<p>It\u2019s simple and
+        streamlined:<p>It takes your <em>resume</em> and the job post and generates  a
+        custom <em>resume</em> tailored to that post. (We do not store your <em>resume</em>
+        or use it to train the <em>AI</em>)\nWhat used to take me 20-30 minutes now
+        takes 30 seconds.\nI\u2019ve gotten callbacks from companies like Apple, Nvidia,
+        Meta, and Amazon using it.\nThe pricing is designed to be accessible: the
+        more jobs you apply to, the cheaper it gets \u2014 around $2 per <em>resume</em>.<p>I''d
+        love for you to try it out and let me know what you think!"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Show
+        HN: An <em>AI</em> <em>Resume</em> <em>Builder</em> That Got Me Callbacks
+        from Nvidia, Meta, and Apple"},"url":{"matchLevel":"none","matchedWords":[],"value":"https://www.swiftresume.net"}},"_tags":["story","author_yregmi","story_42433683","show_hn"],"author":"yregmi","children":[42433888],"created_at":"2024-12-16T18:19:15Z","created_at_i":1734373155,"num_comments":1,"objectID":"42433683","points":2,"story_id":42433683,"story_text":"I\u2019ve
+        been on the job hunt for the past few months and after going through numerous
+        reddit threads and Linkedin posts I saw that customized resumes make a huge
+        difference in getting callbacks. But every tool I tried was either bloated
+        with 50+ features I didn\u2019t need or way too expensive (some were charging
+        $70&#x2F;month!). These people think I&#x27;m made of money!<p>So I decided
+        to build my own AI resume builder.<p>It\u2019s simple and streamlined:<p>It
+        takes your resume and the job post and generates  a custom resume tailored
+        to that post. (We do not store your resume or use it to train the AI)\nWhat
+        used to take me 20-30 minutes now takes 30 seconds.\nI\u2019ve gotten callbacks
+        from companies like Apple, Nvidia, Meta, and Amazon using it.\nThe pricing
+        is designed to be accessible: the more jobs you apply to, the cheaper it gets
+        \u2014 around $2 per resume.<p>I&#x27;d love for you to try it out and let
+        me know what you think!","title":"Show HN: An AI Resume Builder That Got Me
+        Callbacks from Nvidia, Meta, and Apple","updated_at":"2024-12-16T23:34:04Z","url":"https://www.swiftresume.net"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"Trilodi"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"ResumeFromSpace
+        \u2013 Free <em>AI</em>-powered <em>resume</em> <em>builder</em> for out-of-this-world
+        resumes"},"url":{"matchLevel":"none","matchedWords":[],"value":"https://resumefromspace.com/"}},"_tags":["story","author_Trilodi","story_38634450"],"author":"Trilodi","children":[38634452],"created_at":"2023-12-13T21:33:46Z","created_at_i":1702503226,"num_comments":1,"objectID":"38634450","points":2,"story_id":38634450,"title":"ResumeFromSpace
+        \u2013 Free AI-powered resume builder for out-of-this-world resumes","updated_at":"2024-09-20T15:51:12Z","url":"https://resumefromspace.com/"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"amalshehu"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"<em>AI</em>-Powered
+        <em>Resume</em> <em>Builder</em> Now Available in Figma"},"url":{"matchLevel":"none","matchedWords":[],"value":"https://twitter.com/anjali_reghu/status/1655120936398655489"}},"_tags":["story","author_amalshehu","story_35849055"],"author":"amalshehu","children":[35849056],"created_at":"2023-05-07T08:10:07Z","created_at_i":1683447007,"num_comments":1,"objectID":"35849055","points":2,"story_id":35849055,"title":"AI-Powered
+        Resume Builder Now Available in Figma","updated_at":"2024-09-20T14:02:33Z","url":"https://twitter.com/anjali_reghu/status/1655120936398655489"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"gobienan"},"story_text":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Hey
+        Hey,<p>I am excited to share that my <em>AI</em> powered <em>resume</em> <em>builder</em>
+        is now available in French!\nThe whole platform is now translated after the
+        sign up. The <em>AI</em> assistant can also give you suggestions and improvement
+        tips in French for your CV :D<p>The <em>builder</em> is perfect for anyone
+        looking to create a professional and polished <em>resume</em> in minutes.
+        Simply enter your information and let the <em>AI</em> help you to create a
+        great CV. You can then download your <em>resume</em> in PDF or use the online
+        link to share it.<p>I originally built it for myself and my friends, but decided
+        to share it with the world. I hope it helps you as much as it has helped my
+        friends!<p>PS: Next Up is full Spanish support"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Show
+        HN: <em>AI</em> Powered <em>Resume</em> <em>Builder</em> in French"},"url":{"matchLevel":"none","matchedWords":[],"value":"https://www.resoume.com/fr/signup"}},"_tags":["story","author_gobienan","story_32471015","show_hn"],"author":"gobienan","created_at":"2022-08-15T15:35:01Z","created_at_i":1660577701,"num_comments":0,"objectID":"32471015","points":2,"story_id":32471015,"story_text":"Hey
+        Hey,<p>I am excited to share that my AI powered resume builder is now available
+        in French!\nThe whole platform is now translated after the sign up. The AI
+        assistant can also give you suggestions and improvement tips in French for
+        your CV :D<p>The builder is perfect for anyone looking to create a professional
+        and polished resume in minutes. Simply enter your information and let the
+        AI help you to create a great CV. You can then download your resume in PDF
+        or use the online link to share it.<p>I originally built it for myself and
+        my friends, but decided to share it with the world. I hope it helps you as
+        much as it has helped my friends!<p>PS: Next Up is full Spanish support","title":"Show
+        HN: AI Powered Resume Builder in French","updated_at":"2024-09-20T11:52:37Z","url":"https://www.resoume.com/fr/signup"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"daniellaza"},"story_text":{"fullyHighlighted":false,"matchLevel":"partial","matchedWords":["ai","resume"],"value":"Hey
+        HN,<p>My name is Daniel. About a year ago, while job hunting, I noticed that
+        all the <em>AI</em> <em>resume</em> builders are focusing only on ATS scoring
+        and templates, and of course I used them too.<p>But no results, just rejections,
+        and then I found videos from Farah Sharghi (ex-Google, Lyft, Uber, TikTok,
+        and New York Times recruiter), and she mentioned the Google XYZ formula and
+        the study that is on the Boston University website that used eye tracking
+        software to see how recruiters look at a <em>resume</em>. Apparently, they
+        spend only 6 seconds reviewing an individual <em>resume</em>.<p>As a product
+        owner with 20+ years of experience, naturally I started researching this <em>resume</em>
+        vs. recruiters game. I have built a NotebookLM, and I gave it every winning
+        <em>resume</em> I could find and talked to friends here in Romania, where
+        I am located, to interview as many recruiters as I could find, plus all the
+        studies I have found.<p>I have asked a colleague of mine who is a software
+        engineer to build me a system from all that knowledge so it will help me make
+        my <em>resume</em> as perfect as possible. In 3 weeks, I found a job that
+        I am currently working at.<p>About 3 months ago, we decided to build a real
+        product to help others, and this is how ApplyAssists was created.<p>Now we
+        are in the testing phase, and this is why I am here. We have 50 spots for
+        a Free Private Beta test, and all we need from you is your feedback.<p>You
+        can use the system completely for free, and you have my step by step support.<p>Looking
+        forward to hearing from you!"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Show
+        HN: ApplyAssists \u2013 <em>AI</em> <em>resume</em> <em>builder</em> using
+        Google XYZ formula"},"url":{"matchLevel":"none","matchedWords":[],"value":"https://applyassists.com/"}},"_tags":["story","author_daniellaza","story_49073013","show_hn"],"author":"daniellaza","children":[49073229],"created_at":"2026-07-27T17:37:15Z","created_at_i":1785173835,"num_comments":4,"objectID":"49073013","points":1,"story_id":49073013,"story_text":"Hey
+        HN,<p>My name is Daniel. About a year ago, while job hunting, I noticed that
+        all the AI resume builders are focusing only on ATS scoring and templates,
+        and of course I used them too.<p>But no results, just rejections, and then
+        I found videos from Farah Sharghi (ex-Google, Lyft, Uber, TikTok, and New
+        York Times recruiter), and she mentioned the Google XYZ formula and the study
+        that is on the Boston University website that used eye tracking software to
+        see how recruiters look at a resume. Apparently, they spend only 6 seconds
+        reviewing an individual resume.<p>As a product owner with 20+ years of experience,
+        naturally I started researching this resume vs. recruiters game. I have built
+        a NotebookLM, and I gave it every winning resume I could find and talked to
+        friends here in Romania, where I am located, to interview as many recruiters
+        as I could find, plus all the studies I have found.<p>I have asked a colleague
+        of mine who is a software engineer to build me a system from all that knowledge
+        so it will help me make my resume as perfect as possible. In 3 weeks, I found
+        a job that I am currently working at.<p>About 3 months ago, we decided to
+        build a real product to help others, and this is how ApplyAssists was created.<p>Now
+        we are in the testing phase, and this is why I am here. We have 50 spots for
+        a Free Private Beta test, and all we need from you is your feedback.<p>You
+        can use the system completely for free, and you have my step by step support.<p>Looking
+        forward to hearing from you!","title":"Show HN: ApplyAssists \u2013 AI resume
+        builder using Google XYZ formula","updated_at":"2026-07-28T11:12:05Z","url":"https://applyassists.com/"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"itsleonid"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"<em>AI</em>
+        Powered <em>Resume</em> <em>Builder</em> for Developers"},"url":{"matchLevel":"none","matchedWords":[],"value":"https://ninjainbrazil.com/"}},"_tags":["story","author_itsleonid","story_41474724"],"author":"itsleonid","children":[41474725],"created_at":"2024-09-07T16:22:45Z","created_at_i":1725726165,"num_comments":3,"objectID":"41474724","points":1,"story_id":41474724,"title":"AI
+        Powered Resume Builder for Developers","updated_at":"2024-09-20T17:47:50Z","url":"https://ninjainbrazil.com/"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"absinnovation"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Exploring
+        Top <em>AI</em> <em>Resume</em> <em>Builders</em>; Five Unusual, Fun Careers
+        That Pay Pretty Well"},"url":{"matchLevel":"none","matchedWords":[],"value":"https://www.huddleandgo.work/ss"}},"_tags":["story","author_absinnovation","story_43930653"],"author":"absinnovation","children":[43930654],"created_at":"2025-05-08T19:57:36Z","created_at_i":1746734256,"num_comments":1,"objectID":"43930653","points":1,"story_id":43930653,"title":"Exploring
+        Top AI Resume Builders; Five Unusual, Fun Careers That Pay Pretty Well","updated_at":"2025-05-08T23:45:43Z","url":"https://www.huddleandgo.work/ss"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"igershteyn"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"New
+        <em>AI</em> <em>Resume</em> <em>Builder</em>"},"url":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"https://truepath.<em>ai</em>/<em>resume</em>/<em>builder</em>"}},"_tags":["story","author_igershteyn","story_39308103"],"author":"igershteyn","children":[39308104],"created_at":"2024-02-08T21:39:47Z","created_at_i":1707428387,"num_comments":1,"objectID":"39308103","points":1,"story_id":39308103,"title":"New
+        AI Resume Builder","updated_at":"2024-09-20T16:21:25Z","url":"https://truepath.ai/resume/builder"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"ennemlimuhssin"},"story_text":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Post
+        body:\nHi HN,\nI built CV10X (cv10x.com) \u2014 an <em>AI</em> career workspace
+        for job seekers who apply to multiple roles and are tired of starting from
+        scratch every time.\nThe core problem I wanted to solve:\nMost <em>resume</em>
+        builders make you re-enter your information every single time. When you''re
+        applying to 20+ jobs, that''s exhausting and error-prone.\nWhat I built:\nMemo
+        Context \u2014 save your career history, experience, and skills once. Every
+        <em>resume</em> and cover letter you generate automatically pulls from your
+        saved profile.\nProfile Image \u2014 upload your photo once, automatically
+        included in every <em>resume</em>.\nOther features:<p><em>AI</em> <em>resume</em>
+        &amp; cover letter <em>builder</em> tailored to job descriptions\nATS analyzer
+        to catch keyword gaps before submission\nInterview prep built around your
+        own <em>resume</em>\nUpload existing resumes as PDF or image and let <em>AI</em>
+        rebuild them\nFree ATS-compatible templates\nPDF export<p>Business model:
+        Free tier with limits, Standard $8.99/mo, Pro $19/mo\nWhat I''m looking for:\nFeedback
+        on the product, pricing, and positioning. Especially from anyone who has been
+        through a serious job search recently.\ncv10x.com \u2014 free tier, no credit
+        card required."},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Show
+        HN: CV10X \u2013 <em>AI</em> <em>resume</em> <em>builder</em> that remembers
+        your profile"},"url":{"matchLevel":"none","matchedWords":[],"value":"https://www.cv10x.com"}},"_tags":["story","author_ennemlimuhssin","story_47285996","show_hn"],"author":"ennemlimuhssin","created_at":"2026-03-07T09:25:42Z","created_at_i":1772875542,"num_comments":0,"objectID":"47285996","points":1,"story_id":47285996,"story_text":"Post
+        body:\nHi HN,\nI built CV10X (cv10x.com) \u2014 an AI career workspace for
+        job seekers who apply to multiple roles and are tired of starting from scratch
+        every time.\nThe core problem I wanted to solve:\nMost resume builders make
+        you re-enter your information every single time. When you&#x27;re applying
+        to 20+ jobs, that&#x27;s exhausting and error-prone.\nWhat I built:\nMemo
+        Context \u2014 save your career history, experience, and skills once. Every
+        resume and cover letter you generate automatically pulls from your saved profile.\nProfile
+        Image \u2014 upload your photo once, automatically included in every resume.\nOther
+        features:<p>AI resume &amp; cover letter builder tailored to job descriptions\nATS
+        analyzer to catch keyword gaps before submission\nInterview prep built around
+        your own resume\nUpload existing resumes as PDF or image and let AI rebuild
+        them\nFree ATS-compatible templates\nPDF export<p>Business model: Free tier
+        with limits, Standard $8.99&#x2F;mo, Pro $19&#x2F;mo\nWhat I&#x27;m looking
+        for:\nFeedback on the product, pricing, and positioning. Especially from anyone
+        who has been through a serious job search recently.\ncv10x.com \u2014 free
+        tier, no credit card required.","title":"Show HN: CV10X \u2013 AI resume builder
+        that remembers your profile","updated_at":"2026-03-07T09:31:31Z","url":"https://www.cv10x.com"},{"_highlightResult":{"author":{"matchLevel":"none","matchedWords":[],"value":"vikingmute"},"story_text":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"There
+        are already many <em>resume</em> tools in the market. If you search for <em>resume</em>
+        tools, you\u2019ll find many similar ones. I\u2019ve researched and used their
+        features, but they don\u2019t fully meet my needs. I believe that resumes
+        for internet professionals should start to differ from resumes in other industries.
+        They should reflect technical characteristics and rigor in both content and
+        format.\nSo I made TailwindResume: A <em>resume</em> <em>builder</em> for
+        tech professionals. All templates are crafted with Tailwind CSS, enhanced
+        with <em>AI</em> for content generation.<p>Link: <a href=\"https://tailwindresume.co\"
+        rel=\"nofollow\">https://tailwindresume.co</a> \nDocs: <a href=\"https://docs.tailwindresume.co\"
+        rel=\"nofollow\">https://docs.tailwindresume.co</a><p>Features: \n- Clean,
+        responsive templates built with Tailwind CSS \n- <em>AI</em> Smart <em>Resume</em>
+        Generation\n- <em>AI</em> Translation Feature\n- Intelligent <em>Resume</em>
+        Parsing\n- Real tech <em>resume</em> examples (Frontend/Backend/DevOps...)
+        \n- Export as PDF or share as web page - Free <em>resume</em> writing guidelines<p>Looking
+        forward to your feedback!"},"title":{"fullyHighlighted":false,"matchLevel":"full","matchedWords":["ai","resume","builder"],"value":"Show
+        HN: TailwindResume \u2013 I Made an <em>AI</em>-Driven <em>Resume</em> <em>Builder</em>
+        for Coders"},"url":{"matchLevel":"none","matchedWords":[],"value":"https://tailwindresume.co/"}},"_tags":["story","author_vikingmute","story_44116587","show_hn"],"author":"vikingmute","created_at":"2025-05-28T14:47:41Z","created_at_i":1748443661,"num_comments":0,"objectID":"44116587","points":1,"story_id":44116587,"story_text":"There
+        are already many resume tools in the market. If you search for resume tools,
+        you\u2019ll find many similar ones. I\u2019ve researched and used their features,
+        but they don\u2019t fully meet my needs. I believe that resumes for internet
+        professionals should start to differ from resumes in other industries. They
+        should reflect technical characteristics and rigor in both content and format.\nSo
+        I made TailwindResume: A resume builder for tech professionals. All templates
+        are crafted with Tailwind CSS, enhanced with AI for content generation.<p>Link:
+        <a href=\"https:&#x2F;&#x2F;tailwindresume.co\" rel=\"nofollow\">https:&#x2F;&#x2F;tailwindresume.co</a>
+        \nDocs: <a href=\"https:&#x2F;&#x2F;docs.tailwindresume.co\" rel=\"nofollow\">https:&#x2F;&#x2F;docs.tailwindresume.co</a><p>Features:
+        \n- Clean, responsive templates built with Tailwind CSS \n- AI Smart Resume
+        Generation\n- AI Translation Feature\n- Intelligent Resume Parsing\n- Real
+        tech resume examples (Frontend&#x2F;Backend&#x2F;DevOps...) \n- Export as
+        PDF or share as web page - Free resume writing guidelines<p>Looking forward
+        to your feedback!","title":"Show HN: TailwindResume \u2013 I Made an AI-Driven
+        Resume Builder for Coders","updated_at":"2025-05-28T14:50:22Z","url":"https://tailwindresume.co/"}],"hitsPerPage":20,"nbHits":256,"nbPages":13,"page":0,"params":"query=AI+resume+builder&tags=story&advancedSyntax=true&analyticsTags=backend","processingTimeMS":17,"processingTimingsMS":{"_request":{"roundTrip":17},"fetch":{"query":10,"scanning":5,"total":16},"total":17},"query":"AI
+        resume builder","serverTimeMS":18}
+
+        '
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '35662'
+      access-control-allow-origin:
+      - '*'
+      content-type:
+      - application/json
+      date:
+      - Sun, 06 Sep 2026 16:25:46 GMT
+      server:
+      - Google Frontend
+      via:
+      - 1.1 google
+      x-cloud-trace-context:
+      - db172370d5658de40ffa11c4df3001e5
+    status:
+      code: 200
+      message: OK
+version: 1

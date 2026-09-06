@@ -1,0 +1,292 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+    method: GET
+    uri: https://trends.google.com/trends/explore/?geo=US
+  response:
+    body:
+      string: "<html lang=\"en\" dir=ltr><meta charset=utf-8><meta name=viewport content=\"initial-scale=1,
+        minimum-scale=1, width=device-width\"><title>Error 404 (Not Found)!!1</title><style
+        nonce=\"UW1qd7bN4gfi3YcRM6XQdg\">*{margin:0;padding:0}html,code{font:15px/22px
+        arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{color:#222;text-align:unset;margin:7%
+        auto 0;max-width:390px;min-height:180px;padding:30px 0 15px;}* > body{background:url(//www.google.com/images/errors/robot.png)
+        100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}pre{white-space:pre-wrap;}ins{color:#777;text-decoration:none}a
+        img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png)
+        no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png)
+        no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}</style><main
+        id=\"af-error-container\" role=\"main\"><a href=//www.google.com><span id=logo
+        aria-label=Google role=img></span></a><p><b>404.</b> <ins>That\u2019s an error.</ins><p>The
+        requested URL was not found on this server. <ins>That\u2019s all we know.</ins></main>"
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - 'script-src ''nonce-zH4s0Zm0dYCY_y8eWjmmXg'' ''unsafe-inline'' ''strict-dynamic''
+        https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
+        /cspreport'
+      Content-Type:
+      - text/html; charset=utf-8
+      Cross-Origin-Opener-Policy:
+      - same-origin-allow-popups
+      Date:
+      - Sun, 06 Sep 2026 16:25:47 GMT
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      P3P:
+      - CP="This is not a P3P policy! See g.co/p3phelp for more info."
+      Pragma:
+      - no-cache
+      Server:
+      - GSE
+      Set-Cookie:
+      - NID=534=RixsQd7LPKCDb5u7eVUtuKhyYHJ2MIJ_Y7qYzT2cTimGUAHHNIo3Jv3g-EvNzTgGOfyBbEUavBkyeWk_v8BGDIxTiuDXQHjaJ8fFU0h5o3ppSQUcu-YkQu7UWo9dyXErHRUFtmVab8jJCBRKfeZvcsfpxuiE3wyLYQrnNECO7IU8ORoslTN19wLBhr8lKD8DgQJaL3U;
+        expires=Mon, 08-Mar-2027 16:25:47 GMT; path=/; domain=.google.com; HttpOnly
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 404
+      message: Not Found
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Cookie:
+      - NID=534=RixsQd7LPKCDb5u7eVUtuKhyYHJ2MIJ_Y7qYzT2cTimGUAHHNIo3Jv3g-EvNzTgGOfyBbEUavBkyeWk_v8BGDIxTiuDXQHjaJ8fFU0h5o3ppSQUcu-YkQu7UWo9dyXErHRUFtmVab8jJCBRKfeZvcsfpxuiE3wyLYQrnNECO7IU8ORoslTN19wLBhr8lKD8DgQJaL3U
+      accept-language:
+      - en-US
+    method: POST
+    uri: https://trends.google.com/trends/api/explore?hl=en-US&req=%7B%22comparisonItem%22%3A+%5B%7B%22keyword%22%3A+%22lab+grown+diamonds%22%2C+%22time%22%3A+%22today+12-m%22%2C+%22geo%22%3A+%22IN%22%7D%5D%2C+%22category%22%3A+0%2C+%22property%22%3A+%22%22%7D&tz=330
+  response:
+    body:
+      string: ')]}''
+
+        {"widgets":[{"request":{"time":"2025-09-06 2026-09-06","resolution":"WEEK","locale":"en-US","comparisonItem":[{"geo":{"country":"IN"},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"lab
+        grown diamonds"}]}}],"requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"lineAnnotationText":"Search
+        interest","bullets":[{"text":"lab grown diamonds"}],"showLegend":false,"showAverages":false,"helpDialog":{"title":"Interest
+        over time","content":"Numbers represent search interest relative to the highest
+        point on the chart for the given region and time. A value of 100 is the peak
+        popularity for the term. A value of 50 means that the term is half as popular.
+        A score of 0 means there was not enough data for this term."},"token":"ANI_2wMAAAAAap7li_tCEsKQcWicasDIJ2c-MfJQAq2K","id":"TIMESERIES","type":"fe_line_chart","title":"Interest
+        over time","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"geo":{"country":"IN"},"comparisonItem":[{"time":"2025-09-06
+        2026-09-06","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"lab
+        grown diamonds"}]}}],"resolution":"REGION","locale":"en-US","requestOptions":{"property":"","backend":"IZG","category":0},"userConfig":{"userType":"USER_TYPE_SCRAPER"}},"geo":"IN","resolution":"provinces","searchInterestLabel":"Search
+        interest","displayMode":"regions","helpDialog":{"title":"Interest by subregion","content":"See
+        in which location your term was most popular during the specified time frame.
+        Values are calculated on a scale from 0 to 100, where 100 is the location
+        with the most popularity as a fraction of total searches in that location,
+        a value of 50 indicates a location which is half as popular. A value of 0
+        indicates a location where there was not enough data for this term. \u003cp\u003e\u003cp\u003e
+        \u003cb\u003eNote:\u003c/b\u003e A higher value means a higher proportion
+        of all queries, not a higher absolute query count. So a tiny country where
+        80% of the queries are for \"bananas\" will get twice the score of a giant
+        country where only 40% of the queries are for \"bananas\".","url":"https://support.google.com/trends/answer/4355212"},"color":"PALETTE_COLOR_1","index":0,"bullet":"lab
+        grown diamonds","token":"ANI_2wMAAAAAap7li3ulu6WD8vo6k2H2D3ea4din3SRs","id":"GEO_MAP","type":"fe_geo_chart_explore","title":"Interest
+        by subregion","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":true,"isCurated":false},{"request":{"restriction":{"geo":{"country":"IN"},"time":"2025-09-06
+        2026-09-06","originalTimeRangeForExploreUrl":"today 12-m","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"lab
+        grown diamonds"}]}},"keywordType":"ENTITY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2024-09-05
+        2025-09-05"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"IN","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        topics","content":"Users searching for your term also searched for these topics.
+        You can view by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular topics. Scoring is on a relative scale where a value of
+        100 is the most commonly searched topic and a value of 50 is a topic searched
+        half as often as the most popular term, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Related topics with the biggest increase in search frequency since the last
+        time period. Results marked \"Breakout\" had a tremendous increase, probably
+        because these topics are new and had few (if any) prior searches."},"color":"PALETTE_COLOR_1","keywordName":"lab
+        grown diamonds","token":"ANI_2wMAAAAAap7li6ogMWQtgph_BylMNFC42elxNdoS","id":"RELATED_TOPICS","type":"fe_related_searches","title":"Related
+        topics","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false},{"request":{"restriction":{"geo":{"country":"IN"},"time":"2025-09-06
+        2026-09-06","originalTimeRangeForExploreUrl":"today 12-m","complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"lab
+        grown diamonds"}]}},"keywordType":"QUERY","metric":["TOP","RISING"],"trendinessSettings":{"compareTime":"2024-09-05
+        2025-09-05"},"requestOptions":{"property":"","backend":"IZG","category":0},"language":"en","userCountryCode":"IN","userConfig":{"userType":"USER_TYPE_SCRAPER"}},"helpDialog":{"title":"Related
+        queries","content":"Users searching for your term also searched for these
+        queries. You can sort by the following metrics: \u003cp\u003e* \u003cb\u003eTop\u003c/b\u003e
+        - The most popular search queries. Scoring is on a relative scale where a
+        value of 100 is the most commonly searched query, 50 is a query searched half
+        as often as the most popular query, and so on. \u003cp\u003e* \u003cb\u003eRising\u003c/b\u003e
+        - Queries with the biggest increase in search frequency since the last time
+        period. Results marked \"Breakout\" had a tremendous increase, probably because
+        these queries are new and had few (if any) prior searches.","url":"https://support.google.com/trends/answer/4355000"},"color":"PALETTE_COLOR_1","keywordName":"lab
+        grown diamonds","token":"ANI_2wMAAAAAap7li0goqajCgl2HNHE316lO_RFR_Yxh","id":"RELATED_QUERIES","type":"fe_related_searches","title":"Related
+        queries","template":"fe","embedTemplate":"fe_embed","version":"1","isLong":false,"isCurated":false}],"keywords":[{"keyword":"lab
+        grown diamonds","name":"lab grown diamonds","type":"Search term"}],"timeRanges":["Past
+        12 months"],"shareText":"Explore search interest for lab grown diamonds by
+        time, location and popularity on Google Trends","shouldShowMultiHeatMapMessage":false}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Disposition:
+      - attachment; filename="json.txt"; filename*=UTF-8''json.txt
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - 'script-src ''nonce-EagBUPDqjHkCD7yTY4LCjQ'' ''unsafe-inline'' ''strict-dynamic''
+        https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
+        /trends/cspreport'
+      Content-Type:
+      - application/json; charset=utf-8
+      Cross-Origin-Opener-Policy:
+      - same-origin-allow-popups
+      Date:
+      - Sun, 06 Sep 2026 16:25:47 GMT
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      P3P:
+      - CP="This is not a P3P policy! See g.co/p3phelp for more info."
+      Pragma:
+      - no-cache
+      Server:
+      - GSE
+      Set-Cookie:
+      - NID=534=IcSe9QIXWg3faQVb5EXn0nXOIlZAAghzj1Kjza3t3_QhgdP4CG8r9Y9FXg74RaL_NPKcqhNr6emGhl8Z89TycxuH8GEjErrwNP_voGXiQ1JeH1-z9XsiW779cKFF1i1cGuxqN9YZMhCGwpittIchiql4xYcNqoAU1PSd2VB3nCBcsmsYK5GamRUGnUMq8PETvDn4b-A;
+        expires=Mon, 08-Mar-2027 16:25:47 GMT; path=/; domain=.google.com; HttpOnly
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Cookie:
+      - NID=534=RixsQd7LPKCDb5u7eVUtuKhyYHJ2MIJ_Y7qYzT2cTimGUAHHNIo3Jv3g-EvNzTgGOfyBbEUavBkyeWk_v8BGDIxTiuDXQHjaJ8fFU0h5o3ppSQUcu-YkQu7UWo9dyXErHRUFtmVab8jJCBRKfeZvcsfpxuiE3wyLYQrnNECO7IU8ORoslTN19wLBhr8lKD8DgQJaL3U
+      accept-language:
+      - en-US
+    method: GET
+    uri: https://trends.google.com/trends/api/widgetdata/multiline?req=%7B%22time%22%3A+%222025-09-06+2026-09-06%22%2C+%22resolution%22%3A+%22WEEK%22%2C+%22locale%22%3A+%22en-US%22%2C+%22comparisonItem%22%3A+%5B%7B%22geo%22%3A+%7B%22country%22%3A+%22IN%22%7D%2C+%22complexKeywordsRestriction%22%3A+%7B%22keyword%22%3A+%5B%7B%22type%22%3A+%22BROAD%22%2C+%22value%22%3A+%22lab+grown+diamonds%22%7D%5D%7D%7D%5D%2C+%22requestOptions%22%3A+%7B%22property%22%3A+%22%22%2C+%22backend%22%3A+%22IZG%22%2C+%22category%22%3A+0%7D%2C+%22userConfig%22%3A+%7B%22userType%22%3A+%22USER_TYPE_SCRAPER%22%7D%7D&token=ANI_2wMAAAAAap7li_tCEsKQcWicasDIJ2c-MfJQAq2K&tz=330
+  response:
+    body:
+      string: ')]}'',
+
+        {"default":{"timelineData":[{"time":"1756598400","formattedTime":"Aug 31\u2009\u2013\u2009Sep
+        6, 2025","formattedAxisTime":"Aug 31, 2025","value":[81],"hasData":[true],"formattedValue":["81"]},{"time":"1757203200","formattedTime":"Sep
+        7\u2009\u2013\u200913, 2025","formattedAxisTime":"Sep 7, 2025","value":[57],"hasData":[true],"formattedValue":["57"]},{"time":"1757808000","formattedTime":"Sep
+        14\u2009\u2013\u200920, 2025","formattedAxisTime":"Sep 14, 2025","value":[53],"hasData":[true],"formattedValue":["53"]},{"time":"1758412800","formattedTime":"Sep
+        21\u2009\u2013\u200927, 2025","formattedAxisTime":"Sep 21, 2025","value":[52],"hasData":[true],"formattedValue":["52"]},{"time":"1759017600","formattedTime":"Sep
+        28\u2009\u2013\u2009Oct 4, 2025","formattedAxisTime":"Sep 28, 2025","value":[60],"hasData":[true],"formattedValue":["60"]},{"time":"1759622400","formattedTime":"Oct
+        5\u2009\u2013\u200911, 2025","formattedAxisTime":"Oct 5, 2025","value":[66],"hasData":[true],"formattedValue":["66"]},{"time":"1760227200","formattedTime":"Oct
+        12\u2009\u2013\u200918, 2025","formattedAxisTime":"Oct 12, 2025","value":[74],"hasData":[true],"formattedValue":["74"]},{"time":"1760832000","formattedTime":"Oct
+        19\u2009\u2013\u200925, 2025","formattedAxisTime":"Oct 19, 2025","value":[67],"hasData":[true],"formattedValue":["67"]},{"time":"1761436800","formattedTime":"Oct
+        26\u2009\u2013\u2009Nov 1, 2025","formattedAxisTime":"Oct 26, 2025","value":[59],"hasData":[true],"formattedValue":["59"]},{"time":"1762041600","formattedTime":"Nov
+        2\u2009\u2013\u20098, 2025","formattedAxisTime":"Nov 2, 2025","value":[66],"hasData":[true],"formattedValue":["66"]},{"time":"1762646400","formattedTime":"Nov
+        9\u2009\u2013\u200915, 2025","formattedAxisTime":"Nov 9, 2025","value":[63],"hasData":[true],"formattedValue":["63"]},{"time":"1763251200","formattedTime":"Nov
+        16\u2009\u2013\u200922, 2025","formattedAxisTime":"Nov 16, 2025","value":[60],"hasData":[true],"formattedValue":["60"]},{"time":"1763856000","formattedTime":"Nov
+        23\u2009\u2013\u200929, 2025","formattedAxisTime":"Nov 23, 2025","value":[76],"hasData":[true],"formattedValue":["76"]},{"time":"1764460800","formattedTime":"Nov
+        30\u2009\u2013\u2009Dec 6, 2025","formattedAxisTime":"Nov 30, 2025","value":[65],"hasData":[true],"formattedValue":["65"]},{"time":"1765065600","formattedTime":"Dec
+        7\u2009\u2013\u200913, 2025","formattedAxisTime":"Dec 7, 2025","value":[58],"hasData":[true],"formattedValue":["58"]},{"time":"1765670400","formattedTime":"Dec
+        14\u2009\u2013\u200920, 2025","formattedAxisTime":"Dec 14, 2025","value":[64],"hasData":[true],"formattedValue":["64"]},{"time":"1766275200","formattedTime":"Dec
+        21\u2009\u2013\u200927, 2025","formattedAxisTime":"Dec 21, 2025","value":[69],"hasData":[true],"formattedValue":["69"]},{"time":"1766880000","formattedTime":"Dec
+        28, 2025\u2009\u2013\u2009Jan 3, 2026","formattedAxisTime":"Dec 28, 2025","value":[76],"hasData":[true],"formattedValue":["76"]},{"time":"1767484800","formattedTime":"Jan
+        4\u2009\u2013\u200910, 2026","formattedAxisTime":"Jan 4, 2026","value":[100],"hasData":[true],"formattedValue":["100"]},{"time":"1768089600","formattedTime":"Jan
+        11\u2009\u2013\u200917, 2026","formattedAxisTime":"Jan 11, 2026","value":[68],"hasData":[true],"formattedValue":["68"]},{"time":"1768694400","formattedTime":"Jan
+        18\u2009\u2013\u200924, 2026","formattedAxisTime":"Jan 18, 2026","value":[79],"hasData":[true],"formattedValue":["79"]},{"time":"1769299200","formattedTime":"Jan
+        25\u2009\u2013\u200931, 2026","formattedAxisTime":"Jan 25, 2026","value":[68],"hasData":[true],"formattedValue":["68"]},{"time":"1769904000","formattedTime":"Feb
+        1\u2009\u2013\u20097, 2026","formattedAxisTime":"Feb 1, 2026","value":[73],"hasData":[true],"formattedValue":["73"]},{"time":"1770508800","formattedTime":"Feb
+        8\u2009\u2013\u200914, 2026","formattedAxisTime":"Feb 8, 2026","value":[93],"hasData":[true],"formattedValue":["93"]},{"time":"1771113600","formattedTime":"Feb
+        15\u2009\u2013\u200921, 2026","formattedAxisTime":"Feb 15, 2026","value":[87],"hasData":[true],"formattedValue":["87"]},{"time":"1771718400","formattedTime":"Feb
+        22\u2009\u2013\u200928, 2026","formattedAxisTime":"Feb 22, 2026","value":[71],"hasData":[true],"formattedValue":["71"]},{"time":"1772323200","formattedTime":"Mar
+        1\u2009\u2013\u20097, 2026","formattedAxisTime":"Mar 1, 2026","value":[68],"hasData":[true],"formattedValue":["68"]},{"time":"1772928000","formattedTime":"Mar
+        8\u2009\u2013\u200914, 2026","formattedAxisTime":"Mar 8, 2026","value":[52],"hasData":[true],"formattedValue":["52"]},{"time":"1773532800","formattedTime":"Mar
+        15\u2009\u2013\u200921, 2026","formattedAxisTime":"Mar 15, 2026","value":[56],"hasData":[true],"formattedValue":["56"]},{"time":"1774137600","formattedTime":"Mar
+        22\u2009\u2013\u200928, 2026","formattedAxisTime":"Mar 22, 2026","value":[49],"hasData":[true],"formattedValue":["49"]},{"time":"1774742400","formattedTime":"Mar
+        29\u2009\u2013\u2009Apr 4, 2026","formattedAxisTime":"Mar 29, 2026","value":[55],"hasData":[true],"formattedValue":["55"]},{"time":"1775347200","formattedTime":"Apr
+        5\u2009\u2013\u200911, 2026","formattedAxisTime":"Apr 5, 2026","value":[54],"hasData":[true],"formattedValue":["54"]},{"time":"1775952000","formattedTime":"Apr
+        12\u2009\u2013\u200918, 2026","formattedAxisTime":"Apr 12, 2026","value":[63],"hasData":[true],"formattedValue":["63"]},{"time":"1776556800","formattedTime":"Apr
+        19\u2009\u2013\u200925, 2026","formattedAxisTime":"Apr 19, 2026","value":[55],"hasData":[true],"formattedValue":["55"]},{"time":"1777161600","formattedTime":"Apr
+        26\u2009\u2013\u2009May 2, 2026","formattedAxisTime":"Apr 26, 2026","value":[56],"hasData":[true],"formattedValue":["56"]},{"time":"1777766400","formattedTime":"May
+        3\u2009\u2013\u20099, 2026","formattedAxisTime":"May 3, 2026","value":[59],"hasData":[true],"formattedValue":["59"]},{"time":"1778371200","formattedTime":"May
+        10\u2009\u2013\u200916, 2026","formattedAxisTime":"May 10, 2026","value":[53],"hasData":[true],"formattedValue":["53"]},{"time":"1778976000","formattedTime":"May
+        17\u2009\u2013\u200923, 2026","formattedAxisTime":"May 17, 2026","value":[50],"hasData":[true],"formattedValue":["50"]},{"time":"1779580800","formattedTime":"May
+        24\u2009\u2013\u200930, 2026","formattedAxisTime":"May 24, 2026","value":[52],"hasData":[true],"formattedValue":["52"]},{"time":"1780185600","formattedTime":"May
+        31\u2009\u2013\u2009Jun 6, 2026","formattedAxisTime":"May 31, 2026","value":[61],"hasData":[true],"formattedValue":["61"]},{"time":"1780790400","formattedTime":"Jun
+        7\u2009\u2013\u200913, 2026","formattedAxisTime":"Jun 7, 2026","value":[57],"hasData":[true],"formattedValue":["57"]},{"time":"1781395200","formattedTime":"Jun
+        14\u2009\u2013\u200920, 2026","formattedAxisTime":"Jun 14, 2026","value":[53],"hasData":[true],"formattedValue":["53"]},{"time":"1782000000","formattedTime":"Jun
+        21\u2009\u2013\u200927, 2026","formattedAxisTime":"Jun 21, 2026","value":[53],"hasData":[true],"formattedValue":["53"]},{"time":"1782604800","formattedTime":"Jun
+        28\u2009\u2013\u2009Jul 4, 2026","formattedAxisTime":"Jun 28, 2026","value":[61],"hasData":[true],"formattedValue":["61"]},{"time":"1783209600","formattedTime":"Jul
+        5\u2009\u2013\u200911, 2026","formattedAxisTime":"Jul 5, 2026","value":[48],"hasData":[true],"formattedValue":["48"]},{"time":"1783814400","formattedTime":"Jul
+        12\u2009\u2013\u200918, 2026","formattedAxisTime":"Jul 12, 2026","value":[59],"hasData":[true],"formattedValue":["59"]},{"time":"1784419200","formattedTime":"Jul
+        19\u2009\u2013\u200925, 2026","formattedAxisTime":"Jul 19, 2026","value":[51],"hasData":[true],"formattedValue":["51"]},{"time":"1785024000","formattedTime":"Jul
+        26\u2009\u2013\u2009Aug 1, 2026","formattedAxisTime":"Jul 26, 2026","value":[58],"hasData":[true],"formattedValue":["58"]},{"time":"1785628800","formattedTime":"Aug
+        2\u2009\u2013\u20098, 2026","formattedAxisTime":"Aug 2, 2026","value":[56],"hasData":[true],"formattedValue":["56"]},{"time":"1786233600","formattedTime":"Aug
+        9\u2009\u2013\u200915, 2026","formattedAxisTime":"Aug 9, 2026","value":[58],"hasData":[true],"formattedValue":["58"]},{"time":"1786838400","formattedTime":"Aug
+        16\u2009\u2013\u200922, 2026","formattedAxisTime":"Aug 16, 2026","value":[60],"hasData":[true],"formattedValue":["60"]},{"time":"1787443200","formattedTime":"Aug
+        23\u2009\u2013\u200929, 2026","formattedAxisTime":"Aug 23, 2026","value":[61],"hasData":[true],"formattedValue":["61"]},{"time":"1788048000","formattedTime":"Aug
+        30\u2009\u2013\u2009Sep 5, 2026","formattedAxisTime":"Aug 30, 2026","value":[58],"hasData":[true],"formattedValue":["58"]},{"time":"1788652800","formattedTime":"Sep
+        6\u2009\u2013\u200912, 2026","formattedAxisTime":"Sep 6, 2026","value":[50],"hasData":[true],"formattedValue":["50"],"isPartial":true}],"averages":[]}}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Cache-Control:
+      - private, max-age=0
+      Content-Disposition:
+      - attachment; filename="json.txt"
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - 'script-src ''nonce-VLqeNPzvA_j3cXtSufITlw'' ''unsafe-inline'' ''strict-dynamic''
+        https: http: ''unsafe-eval'';object-src ''none'';base-uri ''self'';report-uri
+        /trends/cspreport'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Cross-Origin-Opener-Policy:
+      - same-origin-allow-popups
+      Date:
+      - Sun, 06 Sep 2026 16:25:48 GMT
+      Expires:
+      - Sun, 06 Sep 2026 16:25:48 GMT
+      P3P:
+      - CP="This is not a P3P policy! See g.co/p3phelp for more info."
+      Server:
+      - GSE
+      Set-Cookie:
+      - NID=534=qD8IsY9wNfzdK4G3wn3jJsPn3k0eNPZmZviK9SN5BwI_01AQadpqfovM5PElfbemaaLQarUfqSd1dvcbmr0OY5pa1ND8hPuFGDg3y9dt6sMXxWb1INh2cyI1jX9fOdPKbddPsu4Req-Hql0Ux2Tz7rM1UMY30Namq9Y5F85dhxXsnO0gDJqyR7QQ1lbXRrAvaNHyrVY;
+        expires=Mon, 08-Mar-2027 16:25:47 GMT; path=/; domain=.google.com; HttpOnly
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1

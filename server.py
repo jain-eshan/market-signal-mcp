@@ -10,7 +10,21 @@ from mcp.server.fastmcp import FastMCP
 from pytrends.request import TrendReq
 
 mcp = FastMCP("market-signal")
-pytrends = TrendReq(hl="en-US", tz=330)
+
+# Lazy singleton - TrendReq()'s constructor makes a real network call (fetching a
+# Google cookie) on instantiation. Eagerly constructing it at import time means
+# every test run (and every MCP server boot) makes an uncounted, unrecordable
+# network call before any test/tool even runs - the exact flakiness issue #8's
+# recorded-fixture testing is meant to eliminate. Deferring construction to first
+# use means that call happens inside whichever test's cassette scope needs it.
+_pytrends = None
+
+
+def get_pytrends():
+    global _pytrends
+    if _pytrends is None:
+        _pytrends = TrendReq(hl="en-US", tz=330)
+    return _pytrends
 
 RESPONSE_FORMATS = ("concise", "full")
 
@@ -87,8 +101,8 @@ def interest_over_time(
           omitted when false in "concise" mode, since false is the common case.
         - One numeric key per keyword (0-100 relative interest value)
     """
-    pytrends.build_payload(keywords[:5], timeframe=timeframe, geo=geo)
-    df = pytrends.interest_over_time()
+    get_pytrends().build_payload(keywords[:5], timeframe=timeframe, geo=geo)
+    df = get_pytrends().interest_over_time()
     records = df_to_records(df)
     return apply_format(records, response_format, recent_days=90)
 
@@ -118,10 +132,10 @@ def related_queries(
           NOT a literal 5000% increase. This is Google's way of saying the data cannot
           be assigned a meaningful numeric value.
     """
-    pytrends.build_payload([keyword], timeframe=timeframe, geo=geo)
+    get_pytrends().build_payload([keyword], timeframe=timeframe, geo=geo)
     # Patch pytrends to handle empty rankedList (IndexError when Google has no related queries data)
     try:
-        result = pytrends.related_queries()[keyword]
+        result = get_pytrends().related_queries()[keyword]
     except IndexError:
         # Google Trends doesn't have related queries data for this keyword/geo combination
         result = {"top": None, "rising": None}
@@ -154,10 +168,10 @@ def related_topics(
           from near-zero baseline, NOT a literal 5000% increase. This is the same convention as "rising"
           queries.
     """
-    pytrends.build_payload([keyword], timeframe=timeframe, geo=geo)
+    get_pytrends().build_payload([keyword], timeframe=timeframe, geo=geo)
     # Patch pytrends to handle empty rankedList (IndexError when Google has no related topics data)
     try:
-        result = pytrends.related_topics()[keyword]
+        result = get_pytrends().related_topics()[keyword]
     except IndexError:
         # Google Trends doesn't have related topics data for this keyword/geo combination
         result = {"top": None, "rising": None}
@@ -188,9 +202,9 @@ def interest_by_region(
           region. Higher values indicate higher relative interest in that region compared to others
           in the same country. This is Google Trends' standard region-relative scale.
     """
-    pytrends.build_payload([keyword], timeframe=timeframe, geo=geo)
+    get_pytrends().build_payload([keyword], timeframe=timeframe, geo=geo)
     # inc_low_vol=True includes regions Google would otherwise omit for low search volume
-    df = pytrends.interest_by_region(resolution="REGION", inc_low_vol=True)
+    df = get_pytrends().interest_by_region(resolution="REGION", inc_low_vol=True)
     records = df_to_records(df)
     return apply_format(records, response_format, sort_key=keyword, limit=10)
 
@@ -210,7 +224,7 @@ def trending_now(geo: str = "india", response_format: str = "concise") -> list:
     Returns:
         A list of trending search term strings, ordered by trend rank (most-trending first).
     """
-    df = pytrends.trending_searches(pn=geo)
+    df = get_pytrends().trending_searches(pn=geo)
     terms = df[0].tolist()
     return terms[:10] if response_format == "concise" else terms
 

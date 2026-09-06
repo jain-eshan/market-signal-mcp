@@ -1,0 +1,83 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+    method: GET
+    uri: https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/Thisarticledoesnotexistxyz123/monthly/20250906/20260906
+  response:
+    body:
+      string: '{"detail":"The date(s) you used are valid, but we either do not have
+        data for those date(s), or the project you asked for is not loaded yet. Please
+        check documentation for more information","method":"get","status":404,"title":"Not
+        Found","type":"about:blank","uri":"/metrics/pageviews/per-article/en.wikipedia/all-access/user/Thisarticledoesnotexistxyz123/monthly/20250906/20260906"}'
+    headers:
+      access-control-allow-headers:
+      - accept, content-type, content-length, cache-control, accept-language, api-user-agent,
+        if-match, if-modified-since, if-none-match, dnt, accept-encoding
+      access-control-allow-methods:
+      - GET,HEAD
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - etag
+      age:
+      - '106'
+      cache-control:
+      - s-maxage=600
+      content-length:
+      - '383'
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/problem+json
+      date:
+      - Sun, 06 Sep 2026 16:24:10 GMT
+      etag:
+      - W/"20-da39a3ee5e6b4b0d3255bfef95601890afd80709"
+      nel:
+      - '{ "report_to": "wm_nel", "max_age": 604800, "failure_fraction": 0.05, "success_fraction":
+        0.0}'
+      referrer-policy:
+      - origin-when-cross-origin
+      report-to:
+      - '{ "group": "wm_nel", "max_age": 604800, "endpoints": [{ "url": "https://intake-logging.wikimedia.org/v1/events?stream=w3c.reportingapi.network_error&schema_uri=/w3c/reportingapi/network_error/1.0.0"
+        }] }'
+      server:
+      - main-tls
+      server-timing:
+      - cache;desc="hit-front", host;desc="cp5020",co_id;desc="2178997852"
+      set-cookie:
+      - WMF-Last-Access=06-Sep-2026;Path=/;HttpOnly;secure;Expires=Thu, 08 Oct 2026
+        12:00:00 GMT
+      - WMF-Last-Access-Global=06-Sep-2026;Path=/;Domain=.wikimedia.org;HttpOnly;secure;Expires=Thu,
+        08 Oct 2026 12:00:00 GMT
+      - GeoIP=IN:DL:New_Delhi:28.63:77.22:v4; Path=/; secure; Domain=.wikimedia.org
+      - NetworkProbeLimit=0.001;Path=/;Secure;SameSite=None;Max-Age=3600
+      strict-transport-security:
+      - max-age=106384710; includeSubDomains; preload
+      x-analytics:
+      - ''
+      x-cache:
+      - cp5020 miss, cp5020 hit/1
+      x-cache-status:
+      - hit-front
+      x-client-ip:
+      - 2401:4900:5f26:4052:61e1:c7bb:c64:3791
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-request-id:
+      - f589e407-8983-44af-9288-fbbcd95349eb
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 404
+      message: Not Found
+version: 1

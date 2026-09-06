@@ -1,0 +1,41 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+    method: GET
+    uri: https://api.opencorporates.com/v0.4/companies/search?q=Stripe
+  response:
+    body:
+      string: '{"error":{"message":"Invalid Api Token. Please check your OpenCorporates
+        account"}}'
+    headers:
+      accept-ch:
+      - Sec-CH-UA,Sec-CH-UA-Arch,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      alt-svc:
+      - h3=":443"; ma=3600
+      content-length:
+      - '83'
+      content-type:
+      - application/json;charset=utf-8
+      date:
+      - Sun, 06 Sep 2026 16:25:45 GMT
+      server:
+      - nginx/1.24.0 + Phusion Passenger(R) 6.0.20
+      status:
+      - 401 Unauthorized
+      x-content-type-options:
+      - nosniff
+      x-powered-by:
+      - Phusion Passenger(R) 6.0.20
+      x-request-id:
+      - 6A9D9409-D17E231001BB2A601D-8D9EC
+    status:
+      code: 401
+      message: Unauthorized
+version: 1
