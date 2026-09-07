@@ -36,6 +36,7 @@ def test_related_queries_shape_and_truncation():
     assert len(result["rising"]) <= 10
     for record in result["top"]:
         assert "query" in record and "value" in record
+        assert set(record.keys()) == {"query", "value"}, f"unexpected extra field(s) leaked in: {record}"
 
 
 @pytest.mark.vcr
@@ -44,6 +45,9 @@ def test_related_topics_shape():
     assert set(result.keys()) == {"top", "rising"}
     for record in result["top"]:
         assert "topic_title" in record and "topic_type" in record and "value" in record
+        assert set(record.keys()) == {"topic_title", "topic_type", "value"}, (
+            f"unexpected extra field(s) leaked in: {record}"
+        )
 
 
 @pytest.mark.vcr

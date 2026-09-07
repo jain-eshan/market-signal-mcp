@@ -48,10 +48,17 @@ def handle_trends_errors(func):
 
 
 def df_to_records(df):
-    """Convert a pytrends DataFrame (or None) to plain JSON-safe records."""
+    """Convert a pytrends DataFrame (or None) to plain JSON-safe records. Only
+    folds the index into the output when it's meaningfully named (e.g. "date",
+    "geoName") — related_queries' DataFrame carries a bare ranking index with
+    no name, and unconditionally reset_index()-ing it leaks a stray "index"
+    field into the API contract (caught by test_related_queries_shape_and_truncation
+    once that test asserted an exact key set instead of just membership)."""
     if df is None or df.empty:
         return []
-    return json.loads(df.reset_index().to_json(orient="records", date_format="iso"))
+    if df.index.name is not None:
+        df = df.reset_index()
+    return json.loads(df.to_json(orient="records", date_format="iso"))
 
 
 def apply_format(records, response_format, *, sort_key=None, limit=None, recent_days=None):
