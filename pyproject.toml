@@ -13,9 +13,7 @@ package = false
 
 [dependency-groups]
 dev = [
-    "mcpevals>=0.1.10",
     "pytest>=9.1.1",
-    "pytest-asyncio>=1.4.0",
     "pytest-recording>=0.13.4",
 ]
 

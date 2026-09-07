@@ -130,10 +130,12 @@ This isn't just an API wrapper — it has a real eval suite, because "does the t
 |---|---|---|
 | **Contract tests** (`tests/`) | Every tool's output matches its documented schema; `response_format` contract holds; recorded fixtures, no live network | ✅ 15/15 passing in CI |
 | **Structural report checks** (`tests/eval/test_report_structure.py`) | Every SIGNAL REPORT has all 8 required fields, a valid verdict enum, a Caveats section, under budget — includes a 6-way mutation test proving the checks actually catch violations | ✅ 8/8 passing in CI |
-| **Tool-selection eval** (`tests/eval/test_tool_selection.py`) | Does `/market-signal` call the right tier of tools for a query (Tool Correctness) without calling extras (Tool-Calling Efficiency) — 16 labeled queries, built on [mcp-eval](https://github.com/lastmile-ai/mcp-eval) | ⚠️ Built and structurally verified (config connects to the real server, dataset constructs correctly); needs a real LLM API key to execute — none was available while building this. Run it yourself: `cd tests/eval && cp mcpeval.secrets.yaml.example mcpeval.secrets.yaml` (fill in a key) `&& uv run mcp-eval run test_tool_selection.py -v` |
-| **Output-quality eval** (`tests/eval/test_report_quality.py`, `rubric.md`, `gold_answers.jsonl`) | Is the report's verdict actually correct, free of hallucinated numbers, and does it name the real caveats — 5 gold-labeled queries, LLM-as-judge | ⚠️ Same gap as above — rubric and gold answers are real and committed, judge run needs a key |
+| **Tool-selection eval** (`tests/eval/run_tool_selection.py`) | Does `/market-signal` call the right tier of tools for a query (Tool Correctness) without calling extras (Tool-Calling Efficiency) — 16 labeled queries | ⚠️ Built, harness logic unit-verified (stream-json tool-call parsing confirmed against a simulated transcript). Not run end-to-end: the `claude` CLI on the machine this was built on has an expired OAuth session, and re-authenticating requires an interactive browser login this environment can't do. Run it yourself once `claude` is logged in: `uv run python tests/eval/run_tool_selection.py` |
+| **Output-quality eval** (`tests/eval/run_report_quality_judge.py`, `rubric.md`, `gold_answers.jsonl`) | Is the report's verdict actually correct, free of hallucinated numbers, and does it name the real caveats — 5 gold-labeled queries, LLM-as-judge | ⚠️ Same gap as above — rubric and gold answers are real and committed. Run: `uv run python tests/eval/run_report_quality_judge.py` |
 
-CI runs the always-green contract + structural suites on every push: [![test](https://github.com/jain-eshan/market-signal-mcp/actions/workflows/test.yml/badge.svg)](https://github.com/jain-eshan/market-signal-mcp/actions/workflows/test.yml)
+Both eval scripts run entirely through `claude -p` (Claude Code's own headless CLI, `--mcp-config` pointed at this repo's `server.py`) — **no separate LLM provider API key**, unlike an earlier version of this eval built on the `mcp-eval` framework. A tool meant to live inside Claude Code should use Claude Code's own capability, the same way this project's self-update check and other tooling lean on already-authenticated CLIs rather than holding credentials of their own.
+
+CI runs the always-green contract + structural suites on every push: [![test](https://github.com/jain-eshan/market-signal-mcp/actions/workflows/test.yml/badge.svg)](https://github.com/jain-eshan/market-signal-mcp/actions/workflows/test.yml). The two `claude -p`-driven evals aren't in CI (a runner has no authenticated `claude` CLI) — run them locally from a logged-in machine.
 
 ## Design notes
 
@@ -148,7 +150,7 @@ CI runs the always-green contract + structural suites on every push: [![test](ht
 - `company_registration` covers registration facts only, never funding/traction/valuation data — no free API exists for that.
 - The self-update check notifies only; it does not modify your local install.
 - `reddit_signal`, the Product Hunt half of `builder_activity`, and `company_registration`'s success path were built and their error/setup paths verified live, but their *successful* credentialed calls haven't been verified end-to-end — no API tokens were available while building this. If you set the corresponding env var and hit an issue, please file one.
-- The tool-selection and output-quality evals (see [Evals](#evals)) are built and structurally verified but not yet run against a real LLM judge, for the same reason.
+- The tool-selection and output-quality evals (see [Evals](#evals)) are built and their parsing/harness logic verified, but not yet run end-to-end — the `claude` CLI needs a logged-in session, which wasn't available while building this.
 
 ## License
 

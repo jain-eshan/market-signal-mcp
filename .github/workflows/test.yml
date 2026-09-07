@@ -18,7 +18,11 @@ jobs:
         run: uv run pytest tests/ -v --record-mode=none --ignore=tests/eval
       - name: Run structural report-format checks (no LLM/API key needed)
         run: uv run pytest tests/eval/test_report_structure.py -v
-      # tests/eval/test_tool_selection.py and test_report_quality.py drive a
-      # real LLM agent via mcp-eval and need an API key - run those manually
-      # (see tests/eval/README in the eval-layer docs) or wire a secret-gated
-      # job later; keeping them out of the always-green CI job by design.
+      # tests/eval/run_tool_selection.py and run_report_quality_judge.py drive
+      # a real Claude Code session via `claude -p` (no separate API key, but
+      # it does need an authenticated `claude` CLI, which a CI runner doesn't
+      # have) - run those manually from a machine with `claude` logged in:
+      #   uv run python tests/eval/run_tool_selection.py
+      #   uv run python tests/eval/run_report_quality_judge.py
+      # Keeping them out of the always-green CI job by design; they're named
+      # run_*.py rather than test_*.py so pytest never tries to collect them.

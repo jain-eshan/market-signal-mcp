@@ -1,8 +1,0 @@
-name: "market-signal-mcp tool-selection eval"
-description: "Does /market-signal call the right tier of tools for a given query (Tool Correctness) and avoid calling extra ones it doesn't need (Tool-Calling Efficiency)"
-
-mcp:
-  servers:
-    market-signal:
-      command: "uv"
-      args: ["run", "--directory", "../..", "server.py"]
