@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "market-signal-mcp",
+  "version": "0.1.0",
+  "description": "Multi-source market-signal research tool for Claude Code",
+  "owner": {
+    "name": "Eshan Jain"
+  },
+  "plugins": [
+    {
+      "name": "market-signal",
+      "description": "Multi-source market-signal MCP server + skill for case-competition and startup-idea research",
+      "source": "./",
+      "category": "research"
+    }
+  ]
+}

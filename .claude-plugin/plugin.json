@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin.json",
+  "name": "market-signal",
+  "version": "0.1.0",
+  "description": "Multi-source market-signal MCP server + skill for case-competition and startup-idea research",
+  "author": {
+    "name": "Eshan Jain"
+  },
+  "homepage": "https://github.com/jain-eshan/market-signal-mcp",
+  "license": "MIT",
+  "skills": "./.claude/skills",
+  "mcpServers": {
+    "market-signal": {
+      "command": "uv",
+      "args": ["run", "--directory", "${CLAUDE_PLUGIN_ROOT}", "server.py"]
+    }
+  }
+}
