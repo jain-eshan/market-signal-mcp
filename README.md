@@ -77,7 +77,7 @@ Monthly Wikipedia pageview counts — a free, no-auth reading/reference-interest
 **`--deep` tier** (requires free credentials):
 
 ### `reddit_signal(query, subreddits=None, limit=25)`
-Qualitative community signal via Reddit search. Requires a free Reddit app — create one at https://www.reddit.com/prefs/apps (type "script") and set `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET`.
+Qualitative community signal via Reddit search. Requires a free Reddit app — create one at https://www.reddit.com/prefs/apps (type "script") and set `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET`. **As of 2026-09-07, Reddit requires manual approval for new apps** (self-service registration closed in late 2025) — expect a wait, not instant signup. Fully optional: `--deep` works fine without it, and this tool degrades to a clear setup message rather than erroring if unconfigured.
 
 ### `builder_activity(query)`
 Builder/launch-activity signal: Hacker News (Algolia search, no auth) + Product Hunt (requires a free developer token — create one at https://api.producthunt.com/v2/oauth/applications and set `PRODUCTHUNT_TOKEN`). Both `hn` and `product_hunt` are always present as lists; HN works regardless of whether the PH token is set.
@@ -91,15 +91,22 @@ All tools catch failures (rate limits, missing credentials, network errors) and 
 
 ## Setup
 
-Requires Python 3.10+ and [`uv`](https://docs.astral.sh/uv/).
+**Recommended — install as a Claude Code Plugin.** Two commands, no cloning, no manual path-finding. Run these inside any Claude Code session:
 
-```bash
-git clone https://github.com/jain-eshan/market-signal-mcp.git
-cd market-signal-mcp
-uv sync
+```
+/plugin marketplace add jain-eshan/market-signal-mcp
+/plugin install market-signal
 ```
 
-Optional — set any of these you want the corresponding tool to work:
+Start a **new** Claude Code conversation after installing — sessions already running won't pick up a newly added plugin. Check it connected:
+
+```bash
+claude mcp list
+```
+
+You should see `market-signal` listed as `✔ Connected` with 9 tools. Then run `/market-signal <your idea>` (add `--deep` for the community/builder tier).
+
+Optional — set any of these before installing if you want the corresponding tool to work (all degrade gracefully if unset):
 
 ```bash
 export REDDIT_CLIENT_ID=...
@@ -108,19 +115,16 @@ export PRODUCTHUNT_TOKEN=...
 export OPENCORPORATES_API_TOKEN=...
 ```
 
-## Register with Claude Code
+**Alternative — manual clone**, if you want to read or modify the code:
 
 ```bash
-claude mcp add market-signal -- uv run --directory /absolute/path/to/market-signal-mcp server.py
+git clone https://github.com/jain-eshan/market-signal-mcp.git
+cd market-signal-mcp
+uv sync
+claude mcp add market-signal -- uv run --directory "$(pwd)" server.py
 ```
 
-Verify it connected:
-
-```bash
-claude mcp list
-```
-
-You should see `market-signal` listed as `✔ Connected` with 9 tools. Start a **new** Claude Code conversation after registering — sessions already running won't pick up a newly added server. Then run `/market-signal <your idea>` (add `--deep` for the community/builder tier).
+Same verification and env vars as above apply to this path too.
 
 ## Evals
 
@@ -150,6 +154,7 @@ CI runs the always-green contract + structural suites on every push: [![test](ht
 - `company_registration` covers registration facts only, never funding/traction/valuation data — no free API exists for that.
 - The self-update check notifies only; it does not modify your local install.
 - `reddit_signal`, the Product Hunt half of `builder_activity`, and `company_registration`'s success path were built and their error/setup paths verified live, but their *successful* credentialed calls haven't been verified end-to-end — no API tokens were available while building this. If you set the corresponding env var and hit an issue, please file one.
+- Reddit's self-service app registration is closed (see [Tools](#tools)) — getting `reddit_signal` working involves a manual approval queue, not instant signup. Don't count on it for a same-day setup.
 - The tool-selection and output-quality evals (see [Evals](#evals)) are built and their parsing/harness logic verified, but not yet run end-to-end — the `claude` CLI needs a logged-in session, which wasn't available while building this.
 
 ## License
