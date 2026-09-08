@@ -6,7 +6,7 @@ Started as a single-source Google Trends wrapper; evolved into a multi-source si
 
 ## `/market-signal` — the actual product
 
-The 9 raw tools below return structured data with no interpretation. The `.claude/skills/market-signal/SKILL.md` skill is where the judgment happens: it decides which tools to call, fans them out in parallel, and writes a fixed-format **SIGNAL REPORT** so results are comparable across ideas and across sessions.
+The 9 raw tools below return structured data with no interpretation. The `.claude/skills/market-signal/SKILL.md` skill is where the judgment happens — and it's a conversation, not a one-shot command: it scopes the request, researches with the grounded tools plus live web search, writes a fixed-format **SIGNAL REPORT** so results are comparable across ideas and across sessions, then talks through what's real, what's noise, and whether it changes your plan.
 
 ```
 /market-signal AI resume builder for Indian college students
@@ -48,7 +48,18 @@ entrants - the real question worth digging into next is who's actually
 complaining about existing tools, which needs the --deep tier to answer."
 ```
 
-Add `--deep` to also pull Reddit + Hacker News/Product Hunt (community and builder-activity signal, at higher token cost — see [Tools](#tools) below). Every run is appended to a local history file; researching a similar idea again surfaces a `Prior check:` line citing your earlier verdict.
+That report is still the fixed core of every run — but it's not the whole flow anymore:
+
+- **Scopes before researching.** Asks at most 2 clarifying questions, and only when the request is genuinely ambiguous — a request that already states the decision, topic, and stakes gets no questions at all.
+- **Blends grounded data with live web search.** The tools above give quantitative signal; native web search adds qualitative context (competitor mentions, news, forum chatter), cited, never turned into a fabricated confidence score.
+- **Structures a competitive landscape when there's one to show.** Three or more named competitors surfaced by web search get grouped into a Differentiation Landscape (business-model archetype, funding, website) instead of loose prose.
+- **Handles multi-sided ideas entity-by-entity.** An idea naming 2+ distinct impacted stakeholders (e.g. a marketplace's supply and demand sides) gets researched and verdicted per entity — capped at 3, never a numeric score — then closes with an elevator pitch for whichever entity has the strongest signal.
+- **Can render a shareable HTML version.** Ask for something "presentable" or name a non-technical recipient, and the report publishes as a page instead of staying chat-only text.
+- **Stays out of pricing/segment/business-model territory.** If a request drifts there, it hands off to `/idea-validator` or `/office-hours` when either is installed, or asks one pointed question and stops if neither is.
+
+After the report, it opens a real back-and-forth — what's real, what's noise, does this change your plan — capped at 2 exchanges. Every run is appended to a local history file; researching a similar idea again surfaces a `Prior check:` line citing your earlier verdict, and a substantive answer to "does this change your plan" gets logged too, as `outcome`.
+
+Add `--deep` to also pull Reddit + Hacker News/Product Hunt (community and builder-activity signal, at higher token cost — see [Tools](#tools) below).
 
 ## Tools
 
@@ -147,6 +158,7 @@ CI runs the always-green contract + structural suites on every push: [![test](ht
 - **Token-conscious by default.** `response_format="concise"` (the default) truncates and rounds; the default research tier costs ~600-1000 tokens, `--deep` ~2500-3500 — both measured, not estimated, against real API responses.
 - **Self-updating awareness, not self-updating.** A cached, throttled (24h) check compares your local `VERSION` against GitHub and tells you if a newer one exists — it doesn't modify your install.
 - **Remembers what you've researched.** Every run appends to `~/.config/market-signal-mcp/history.jsonl`; researching something similar again surfaces what you found last time.
+- **The guardrail hands off, it doesn't absorb.** When a request drifts into segment/pricing/business-model territory, the skill either calls a real sibling skill (`/idea-validator`, `/office-hours`) or asks one question and stops — it never grows a second synthesis engine of its own.
 
 ## Known limitations
 
@@ -156,6 +168,7 @@ CI runs the always-green contract + structural suites on every push: [![test](ht
 - `reddit_signal`, the Product Hunt half of `builder_activity`, and `company_registration`'s success path were built and their error/setup paths verified live, but their *successful* credentialed calls haven't been verified end-to-end — no API tokens were available while building this. If you set the corresponding env var and hit an issue, please file one.
 - Reddit's self-service app registration is closed (see [Tools](#tools)) — getting `reddit_signal` working involves a manual approval queue, not instant signup. Don't count on it for a same-day setup.
 - The tool-selection and output-quality evals (see [Evals](#evals)) are built and their parsing/harness logic verified, but not yet run end-to-end — the `claude` CLI needs a logged-in session, which wasn't available while building this.
+- The guardrail's handoff to `/idea-validator` was verified live (it receives the drifted question correctly); the `/office-hours` handoff and the shareable HTML rendering (which needs the Artifact tool) haven't been verified end-to-end yet.
 
 ## License
 
